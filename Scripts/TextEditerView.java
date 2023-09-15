@@ -1,9 +1,9 @@
 public class TextEditerView extends JFrame {
 
-	private FrameComponentName frameComponentName;
+	private TextEditerController textEditerController;
 
 	public TextEditerView(StringConversionDataModel aStringConversionDataModel) {
-
+		this.textEditerController = new TextEditerController(aStringConversionDataModel, this);
 	}
 
 }
