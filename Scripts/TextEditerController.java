@@ -1,4 +1,4 @@
-public class TextEditerController extends Object {
+public class TextEditerController extends Object implements ActionListener{
 
 	private StringConversionDataModel stringConversionDataModel;
 
@@ -7,7 +7,9 @@ public class TextEditerController extends Object {
 	public TextEditerController(StringConversionDataModel aStringConversionDataModel, TextEditerView aTextEditerView) {
 		this.stringConversionDataModel = aStringConversionDataModel;
 		this.textEditerView = aTextEditerView;
-
 	}
 
+	public void actionPerformed(ActionEvent e){
+
+	}
 }
