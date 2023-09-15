@@ -1,9 +1,7 @@
 public class MyDefine extends Object {
 
-	private StringConversionDataModel stringConversionDataModel;
-
-	public static void main() {
-
+	public static void main(String[] args) {
+		StringConversionDataModel stringConversionDataModel = new StringConversionDataModel();
 	}
 
 }
