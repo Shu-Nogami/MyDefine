@@ -4,6 +4,11 @@ public class SettingView extends JFrame {
 
 	public SettingView(StringConversionDataModel aStringConversionDataModel) {
 		this.settingController = new SettingController(this, aStringConversionDataModel);
+		this.initializeSettingView();
+	}
+
+	private void initializeSettingView(){
+		
 	}
 
 }
