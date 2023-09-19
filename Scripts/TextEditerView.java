@@ -6,8 +6,11 @@ public class TextEditerView extends JFrame {
 
 	private TextEditerController textEditerController;
 
-	public TextEditerView(StringConversionDataModel aStringConversionDataModel) {
+	private Container textEditerContentPane;
+
+	public TextEditerView(StringConversionDataModel aStringConversionDataModel, Container aTexteditContainer) {
 		this.textEditerController = new TextEditerController(aStringConversionDataModel, this);
+		this.textEditerContentPane = aTexteditContainer;
 	}
 
 }

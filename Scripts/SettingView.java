@@ -6,8 +6,11 @@ public class SettingView extends JFrame {
 
 	private SettingController settingController;
 
-	public SettingView(StringConversionDataModel aStringConversionDataModel) {
+	private Container settingContentPane;
+
+	public SettingView(StringConversionDataModel aStringConversionDataModel, Container aSettingContainer) {
 		this.settingController = new SettingController(this, aStringConversionDataModel);
+		this.settingContentPane = aSettingContainer;
 		this.initializeSettingView();
 	}
 
