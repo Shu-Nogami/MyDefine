@@ -6,6 +6,8 @@ public class FrameView extends JFrame {
 
 	private SettingView settingView;
 
+	private JFrame myDefineFrame;
+
 	private final String FRAME_TITLE = "MyDefine";
 
 	private final Integer FRAME_X_SIZE = 600;
@@ -20,12 +22,12 @@ public class FrameView extends JFrame {
 	}
 
 	private void initializeFrame(){
-		JFrame frame = new JFrame();
-		frame.setTitle(this.FRAME_TITLE);
-		frame.setSize(this.FRAME_X_SIZE, this.FRAME_Y_SIZE);
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
-		
+		myDefineFrame = new JFrame();
+		myDefineFrame.setTitle(this.FRAME_TITLE);
+		myDefineFrame.setSize(this.FRAME_X_SIZE, this.FRAME_Y_SIZE);
+		myDefineFrame.setLocationRelativeTo(null);
+		myDefineFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		myDefineFrame.setVisible(true);
 	}
 
 }
