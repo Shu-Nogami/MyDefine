@@ -17,8 +17,8 @@ public class FrameView extends JFrame {
 
 	public FrameView(StringConversionDataModel aStringConversionDataModel) {
 		this.initializeFrame();
-		this.textEditerView = new TextEditerView(aStringConversionDataModel);
-		this.settingView = new SettingView(aStringConversionDataModel);
+		this.textEditerView = new TextEditerView(aStringConversionDataModel, myDefineFrame.getContentPane());
+		this.settingView = new SettingView(aStringConversionDataModel, myDefineFrame.getContentPane());
 	}
 
 	private void initializeFrame(){
