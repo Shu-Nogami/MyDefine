@@ -1,4 +1,6 @@
 import javax.swing.JFrame;
+import java.awt.Container;
+import java.awt.BorderLayout;
 
 public class SettingView extends JFrame {
 
