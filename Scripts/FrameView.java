@@ -21,10 +21,11 @@ public class FrameView extends JFrame {
 
 	private void initializeFrame(){
 		JFrame frame = new JFrame();
-		this.frame.setTitle(this.FRAME_TITLE);
-		this.frame.setSize(this.FRAME_X_SIZE, this.FRAME_Y_SIZE);
-		this.frame.setLocationRelativeTo(null);
-		this.frame.setVisible(true);
+		frame.setTitle(this.FRAME_TITLE);
+		frame.setSize(this.FRAME_X_SIZE, this.FRAME_Y_SIZE);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+		
 	}
 
 }
