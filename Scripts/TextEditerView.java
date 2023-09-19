@@ -1,3 +1,5 @@
+import javax.swing.JFrame;
+
 public class TextEditerView extends JFrame {
 
 	private TextEditerController textEditerController;

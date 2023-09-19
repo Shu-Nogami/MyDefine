@@ -1,3 +1,5 @@
+import javax.swing.JFrame;
+
 public class SettingView extends JFrame {
 
 	private SettingController settingController;
