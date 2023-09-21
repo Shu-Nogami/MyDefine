@@ -43,6 +43,11 @@ public class TextEditerView extends JFrame {
 		fileMenu.add(fileSave);
 		fileMenu.add(fileSaveAs);
 
+		fileSetting.addActionListener(this.textEditerController);
+		fileOpen.addActionListener(this.textEditerController);
+		fileSave.addActionListener(this.textEditerController);
+		fileSaveAs.addActionListener(this.textEditerController);
+
 		this.myDefinFrame.setJMenuBar(menuBar);
 	}
 	
