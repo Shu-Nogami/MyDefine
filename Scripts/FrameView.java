@@ -29,7 +29,5 @@ public class FrameView extends JFrame {
 		myDefineFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myDefineFrame.setVisible(true);
 	}
-
 	
-
 }
