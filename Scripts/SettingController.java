@@ -1,4 +1,7 @@
-public class SettingController extends Object {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class SettingController extends Object implements ActionListener{
 
 	private SettingView settingView;
 
@@ -9,4 +12,7 @@ public class SettingController extends Object {
 		this.stringConversionDataModel = aStringConversionDataModel;
 	}
 
+	public void actionPerformed(ActionEvent e) {
+
+	}
 }
