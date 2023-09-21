@@ -1,3 +1,6 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class TextEditerController extends Object implements ActionListener{
 
 	private StringConversionDataModel stringConversionDataModel;
