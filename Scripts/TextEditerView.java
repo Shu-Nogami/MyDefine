@@ -35,7 +35,6 @@ public class TextEditerView extends JFrame {
 		this.textEditerController = new TextEditerController(aStringConversionDataModel, this);
 		this.myDefinFrame = aMyDefineFrame;
 		this.initializeTextEditer();
-		System.out.println("1");
 	}
 
 	private void initializeTextEditer(){
@@ -45,7 +44,6 @@ public class TextEditerView extends JFrame {
 		this.setUpMenu();
 		this.setUpTextArea();
 		this.showTextEditerPanel();
-		this.myDefinFrame.setVisible(true);
 	}
 
 	private void showTextEditerPanel(){
