@@ -1,11 +1,15 @@
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.border.Border;
 
 import java.awt.Container;
+import java.awt.ScrollPane;
 import java.awt.BorderLayout;
 
 public class TextEditerView extends JFrame {
@@ -14,32 +18,52 @@ public class TextEditerView extends JFrame {
 
 	private JFrame myDefinFrame;
 
+	private Container textEditerContainer;
+
 	private JPanel textEditerJPanel;
 
 	private JTextArea textEditerArea;
 
-	private final Integer TEXTEDITER_AREACOLUMNS = 10;
+	private JScrollPane textEditerScrollPane;
 
-	private final Integer TEXTEDITER_AREAROWS = 10;
+	private final Integer TEXTEDITER_AREACOLUMNS = 45;
+
+	private final Integer TEXTEDITER_AREAROWS = 20;
 	
 
 	public TextEditerView(StringConversionDataModel aStringConversionDataModel, JFrame aMyDefineFrame) {
 		this.textEditerController = new TextEditerController(aStringConversionDataModel, this);
 		this.myDefinFrame = aMyDefineFrame;
 		this.initializeTextEditer();
+		System.out.println("1");
 	}
 
 	private void initializeTextEditer(){
+		this.textEditerContainer = myDefinFrame.getContentPane();
+		this.textEditerJPanel = new JPanel();
+
 		this.setUpMenu();
-		textEditerJPanel = new JPanel();
 		this.setUpTextArea();
+		this.showTextEditerPanel();
+		this.myDefinFrame.setVisible(true);
+	}
+
+	private void showTextEditerPanel(){
+		this.textEditerContainer.add(this.textEditerJPanel, BorderLayout.CENTER);
 	}
 
 	private void setUpTextArea(){
+		this.textEditerScrollPane = new JScrollPane();
 		this.textEditerArea = new JTextArea();
+
 		this.textEditerArea.setColumns(TEXTEDITER_AREACOLUMNS);
 		this.textEditerArea.setRows(TEXTEDITER_AREAROWS);
-		this.textEditerJPanel.add(this.textEditerArea);
+		this.textEditerArea.setLineWrap(true);
+		
+		this.textEditerScrollPane.setViewportView(this.textEditerArea);
+		this.textEditerScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+		this.textEditerJPanel.add(this.textEditerScrollPane);
 	}
 
 	private void setUpMenu(){
