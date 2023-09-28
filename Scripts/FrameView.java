@@ -19,6 +19,7 @@ public class FrameView extends JFrame {
 		this.initializeFrame();
 		this.textEditerView = new TextEditerView(aStringConversionDataModel, this.myDefineFrame);
 		this.settingView = new SettingView(aStringConversionDataModel, this.myDefineFrame.getContentPane());
+		this.showWindow();
 	}
 
 	private void initializeFrame(){
@@ -27,7 +28,9 @@ public class FrameView extends JFrame {
 		myDefineFrame.setSize(this.FRAME_X_SIZE, this.FRAME_Y_SIZE);
 		myDefineFrame.setLocationRelativeTo(null);
 		myDefineFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	private void showWindow(){
 		myDefineFrame.setVisible(true);
 	}
-	
 }
