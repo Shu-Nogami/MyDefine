@@ -1,12 +1,12 @@
 public class FrameComponentName {
 
-	public static final String FILE_OPEN = "";
+	public static final String FILE_OPEN = "Open";
 
-	public static final String SETTING_BUTTON = "";
+	public static final String SETTING_BUTTON = "Setting";
 
-	public static final String FILE_SAVE = "";
+	public static final String FILE_SAVE = "Save";
 
-	public static final String FILE_SAVE_AS = "";
+	public static final String FILE_SAVE_AS = "Save as";
 
 	public static final String IMPORT_BUTTON = "";
 
@@ -24,7 +24,7 @@ public class FrameComponentName {
 
 	public static final String CONVERSION_TEXT = "";
 
-	public static final String FILE_MENU = "";
+	public static final String FILE_MENU = "File";
 
 	public static final String EDIT_MENU = "";
 
