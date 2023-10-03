@@ -41,6 +41,11 @@ public class SettingView extends JFrame {
 	private void setUpTemplateArea(){
 		this.textBeforeConversionArea = new JTextArea();
 		this.textAfterConversionArea = new JTextArea();
+
+		this.textBeforeConversionArea.setColumns(this.TEXT_CONVERSION_AREA_COLUMNS);
+		this.textBeforeConversionArea.setRows(this.TEXT_CONVERSION_AREA_ROWS);
+		this.textAfterConversionArea.setColumns(this.TEXT_CONVERSION_AREA_COLUMNS);
+		this.textAfterConversionArea.setRows(this.TEXT_CONVERSION_AREA_ROWS);
 	}
 
 	private void setUpButton(){
