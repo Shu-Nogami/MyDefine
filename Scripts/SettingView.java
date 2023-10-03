@@ -29,7 +29,9 @@ public class SettingView extends JFrame {
 	}
 
 	private void initializeSettingView(){
-		settingJPanel = new JPanel();
+		this.settingJPanel = new JPanel();
+		this.setUpTemplateArea();
+		this.setUpButton();
 	}
 
 	private void setUpTemplateArea(){
