@@ -57,8 +57,40 @@ public class SettingView extends JFrame {
 	}
 
 	private void setUpTemplateSelectButton(){
-		JRadioButton firstTemplateSelecButton = new JRadioButton();
+		JRadioButton firstTemplateSelectButton = new JRadioButton();
+		JRadioButton secondTemplateSelectButton = new JRadioButton();
+		JRadioButton thirdTemplateSelectButton = new JRadioButton();
+		JRadioButton fourthTemplateSelectButton = new JRadioButton();
+		JRadioButton fifthTemplateSelectButton = new JRadioButton();
+		JRadioButton sixthTemplateSelectButton = new JRadioButton();
+		JRadioButton seventhTemplateSelectButton = new JRadioButton();
+		JRadioButton eighthTemplateSelectButton = new JRadioButton();
+		JRadioButton ninthTemplateSelectButton = new JRadioButton();
+		JRadioButton tenthTemplateSelectButton = new JRadioButton();
+
 		this.templateSelectButton = new ButtonGroup();
+
+		this.templateSelectButton.add(firstTemplateSelectButton);
+		this.templateSelectButton.add(secondTemplateSelectButton);
+		this.templateSelectButton.add(thirdTemplateSelectButton);
+		this.templateSelectButton.add(fourthTemplateSelectButton);
+		this.templateSelectButton.add(fifthTemplateSelectButton);
+		this.templateSelectButton.add(sixthTemplateSelectButton);
+		this.templateSelectButton.add(seventhTemplateSelectButton);
+		this.templateSelectButton.add(eighthTemplateSelectButton);
+		this.templateSelectButton.add(ninthTemplateSelectButton);
+		this.templateSelectButton.add(tenthTemplateSelectButton);
+
+		this.settingJPanel.add(firstTemplateSelectButton);
+		this.settingJPanel.add(secondTemplateSelectButton);
+		this.settingJPanel.add(thirdTemplateSelectButton);
+		this.settingJPanel.add(fourthTemplateSelectButton);
+		this.settingJPanel.add(fifthTemplateSelectButton);
+		this.settingJPanel.add(sixthTemplateSelectButton);
+		this.settingJPanel.add(seventhTemplateSelectButton);
+		this.settingJPanel.add(eighthTemplateSelectButton);
+		this.settingJPanel.add(ninthTemplateSelectButton);
+		this.settingJPanel.add(tenthTemplateSelectButton);
 	}
 
 	private void setUpButton(){
