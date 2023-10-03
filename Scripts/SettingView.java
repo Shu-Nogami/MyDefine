@@ -20,7 +20,7 @@ public class SettingView extends JFrame {
 
 	private JTextArea textAfterConversionArea;
 
-    private JButton saveAsButton;
+    private JButton saveAndExitButton;
 	
 	private JButton saveButton;
 
@@ -95,7 +95,7 @@ public class SettingView extends JFrame {
 
 	private void setUpButton(){
 		this.saveButton = new JButton();
-		this.saveAsButton = new JButton();
+		this.saveAndExitButton = new JButton();
 	}
 
 }
