@@ -22,6 +22,10 @@ public class SettingView extends JFrame {
 	
 	private JButton saveButton;
 
+	private final Integer TEXT_CONVERSION_AREA_COLUMNS = 30;
+
+	private final Integer TEXT_CONVERSION_AREA_ROWS = 2;
+
 	public SettingView(StringConversionDataModel aStringConversionDataModel, Container aframeContainer) {
 		this.settingController = new SettingController(this, aStringConversionDataModel);
 		this.frameContentPane = aframeContainer;
