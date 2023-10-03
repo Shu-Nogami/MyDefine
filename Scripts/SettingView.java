@@ -1,6 +1,8 @@
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 
 import java.awt.Container;
@@ -22,6 +24,8 @@ public class SettingView extends JFrame {
 	
 	private JButton saveButton;
 
+	private ButtonGroup templateSelectButton;
+
 	private final Integer TEXT_CONVERSION_AREA_COLUMNS = 30;
 
 	private final Integer TEXT_CONVERSION_AREA_ROWS = 2;
@@ -35,6 +39,7 @@ public class SettingView extends JFrame {
 	private void initializeSettingView(){
 		this.settingJPanel = new JPanel();
 		this.setUpTemplateArea();
+		this.setUpTemplateSelectButton();
 		this.setUpButton();
 	}
 
@@ -51,8 +56,14 @@ public class SettingView extends JFrame {
 		this.settingJPanel.add(this.textAfterConversionArea);
 	}
 
-	private void setUpButton(){
+	private void setUpTemplateSelectButton(){
+		JRadioButton firstTemplateSelecButton = new JRadioButton();
+		this.templateSelectButton = new ButtonGroup();
+	}
 
+	private void setUpButton(){
+		this.saveButton = new JButton();
+		this.saveAsButton = new JButton();
 	}
 
 }
