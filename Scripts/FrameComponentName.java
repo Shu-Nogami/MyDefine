@@ -12,7 +12,7 @@ public class FrameComponentName {
 
 	public static final String EXPORT_BUTTON = "Export";
 
-	public static final String ADD_STRING_PANEL_BUTTON = "Add group";
+	public static final String ADD_TEMPLATE_BUTTON = "Add template";
 
 	public static final String EXIT_SETTING_BUTTON = "Save and exit";
 
