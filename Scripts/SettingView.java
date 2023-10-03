@@ -96,6 +96,12 @@ public class SettingView extends JFrame {
 	private void setUpButton(){
 		this.saveButton = new JButton();
 		this.saveAndExitButton = new JButton();
+
+		this.saveButton.setText(FrameComponentName.SAVE_SETTING_BUTTON);
+		this.saveAndExitButton.setText(FrameComponentName.EXIT_SETTING_BUTTON);
+
+		this.settingJPanel.add(this.saveButton);
+		this.settingJPanel.add(this.saveAndExitButton);
 	}
 
 }
