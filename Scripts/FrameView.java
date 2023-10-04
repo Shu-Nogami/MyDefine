@@ -48,10 +48,15 @@ public class FrameView extends JFrame {
 		this.framePanel.add(this.settingView.getSettingPanel());
 
 		this.myDefineFrame.getContentPane().add(this.framePanel, BorderLayout.CENTER);
+		this.showTextEditerPanel();
 	}
 
 	public void showTextEditerPanel(){
 		this.viewPanelsCardLayout.first(this.framePanel);
+	}
+	
+	public void showSettingPanel(){
+		this.viewPanelsCardLayout.last(this.framePanel);
 	}
 
 	private void showWindow(){
