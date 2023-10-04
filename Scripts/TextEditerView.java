@@ -1,3 +1,4 @@
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -8,7 +9,7 @@ import javax.swing.JTextArea;
 import java.awt.Container;
 import java.awt.BorderLayout;
 
-public class TextEditerView extends JFrame {
+public class TextEditerView extends JFrame{
 
 	private TextEditerController textEditerController;
 
@@ -63,7 +64,8 @@ public class TextEditerView extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 
 		JMenu fileMenu = new JMenu(FrameComponentName.FILE_MENU);
-		JMenu fileSetting = new JMenu(FrameComponentName.SETTING_BUTTON);
+		//JMenu fileSetting = new JMenu(FrameComponentName.SETTING_BUTTON);
+		JMenuItem fileSetting = new JMenuItem(FrameComponentName.SETTING_BUTTON);
 
 		menuBar.add(fileMenu);
 		menuBar.add(fileSetting);
@@ -83,6 +85,4 @@ public class TextEditerView extends JFrame {
 
 		this.myDefinFrame.setJMenuBar(menuBar);
 	}
-	
-
 }
