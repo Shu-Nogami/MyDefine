@@ -7,12 +7,19 @@ public class TextEditerController extends Object implements ActionListener{
 
 	private TextEditerView textEditerView;
 
+
 	public TextEditerController(StringConversionDataModel aStringConversionDataModel, TextEditerView aTextEditerView) {
 		this.stringConversionDataModel = aStringConversionDataModel;
 		this.textEditerView = aTextEditerView;
 	}
 
 	public void actionPerformed(ActionEvent e){
+		String actionCommand = e.getActionCommand();
 
+		switch(actionCommand){
+			case FrameComponentName.SETTING_BUTTON -> {
+				this.stringConversionDataModel.frameChangeTextEditerToSetting();
+			}
+		}
 	}
 }
