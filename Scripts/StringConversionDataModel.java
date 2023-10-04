@@ -7,4 +7,8 @@ public class StringConversionDataModel extends Object {
 
 	}
 
+	public void frameChangeTextEditerToSetting(){
+		this.frameView.showSettingPanel();
+	}
+
 }
