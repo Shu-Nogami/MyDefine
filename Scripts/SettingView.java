@@ -41,11 +41,15 @@ public class SettingView extends JFrame {
 		this.setUpTemplateArea();
 		this.setUpTemplateSelectButton();
 		this.setUpButton();
-		this.showSettingPanel();
+		this.AddSettingPanel();
 	}
 	
-	private void showSettingPanel(){
+	private void AddSettingPanel(){
 		this.frameContentPane.add(this.settingJPanel, BorderLayout.CENTER);
+	}
+
+	public JPanel getSettingPanel(){
+        return this.settingJPanel;
 	}
 
 	private void setUpTemplateArea(){
