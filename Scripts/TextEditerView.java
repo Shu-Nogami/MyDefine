@@ -39,11 +39,6 @@ public class TextEditerView extends JFrame {
 
 		this.setUpMenu();
 		this.setUpTextArea();
-		this.AddTextEditerPanel();
-	}
-
-	private void AddTextEditerPanel(){
-		this.textEditerContainer.add(this.textEditerJPanel, BorderLayout.CENTER);
 	}
 
 	public JPanel getTextEditerPanel(){
