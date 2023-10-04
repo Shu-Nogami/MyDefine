@@ -1,4 +1,8 @@
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class FrameView extends JFrame {
 
@@ -7,6 +11,10 @@ public class FrameView extends JFrame {
 	private SettingView settingView;
 
 	private JFrame myDefineFrame;
+
+	private JPanel framePanel;
+
+	private CardLayout viewPanelsCardLayout;
 
 	private final String FRAME_TITLE = "MyDefine";
 
@@ -19,6 +27,7 @@ public class FrameView extends JFrame {
 		this.initializeFrame();
 		this.textEditerView = new TextEditerView(aStringConversionDataModel, this.myDefineFrame);
 		this.settingView = new SettingView(aStringConversionDataModel, this.myDefineFrame.getContentPane());
+		this.setUpCardLayout();
 		this.showWindow();
 	}
 
@@ -28,6 +37,17 @@ public class FrameView extends JFrame {
 		myDefineFrame.setSize(this.FRAME_X_SIZE, this.FRAME_Y_SIZE);
 		myDefineFrame.setLocationRelativeTo(null);
 		myDefineFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	private void setUpCardLayout(){
+		this.framePanel = new JPanel();
+		this.viewPanelsCardLayout = new CardLayout();
+		this.framePanel.setLayout(this.viewPanelsCardLayout);
+
+		this.framePanel.add(this.textEditerView.getTextEditerPanel());
+		this.framePanel.add(this.settingView.getSettingPanel());
+
+		this.myDefineFrame.getContentPane().add(this.framePanel, BorderLayout.CENTER);
 	}
 
 	private void showWindow(){
