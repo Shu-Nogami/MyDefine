@@ -100,6 +100,8 @@ public class SettingView extends JFrame {
 		this.templateSelectButton.add(ninthTemplateSelectButton);
 		this.templateSelectButton.add(tenthTemplateSelectButton);
 
+		firstTemplateSelectButton.setSelected(true);
+
 		this.templateSelectButtonPanel.add(firstTemplateSelectButton);
 		this.templateSelectButtonPanel.add(secondTemplateSelectButton);
 		this.templateSelectButtonPanel.add(thirdTemplateSelectButton);
