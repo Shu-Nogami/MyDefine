@@ -1,3 +1,4 @@
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,6 +16,12 @@ public class SettingView extends JFrame {
 	private Container frameContentPane;
 
 	private JPanel settingJPanel;
+
+	private JPanel textConversionAreaPanel;
+
+	private JPanel templateSelectButtonPanel;
+
+	private JPanel saveButtonPanel;
 
 	private JTextArea textBeforeConversionArea;
 
@@ -50,6 +57,7 @@ public class SettingView extends JFrame {
 	private void setUpTemplateArea(){
 		this.textBeforeConversionArea = new JTextArea();
 		this.textAfterConversionArea = new JTextArea();
+		this.textConversionAreaPanel = new JPanel();
 
 		this.textBeforeConversionArea.setColumns(this.TEXT_CONVERSION_AREA_COLUMNS);
 		this.textBeforeConversionArea.setRows(this.TEXT_CONVERSION_AREA_ROWS);
@@ -59,8 +67,12 @@ public class SettingView extends JFrame {
 		this.textBeforeConversionArea.setLineWrap(true);
 		this.textAfterConversionArea.setLineWrap(true);
 
-		this.settingJPanel.add(this.textBeforeConversionArea);
-		this.settingJPanel.add(this.textAfterConversionArea);
+		this.textConversionAreaPanel.add(this.textBeforeConversionArea);
+		this.textConversionAreaPanel.add(this.textAfterConversionArea);
+
+		this.settingJPanel.add(this.textConversionAreaPanel);
+
+		this.settingJPanel.setLayout(new BoxLayout(this.settingJPanel, BoxLayout.Y_AXIS));
 	}
 
 	private void setUpTemplateSelectButton(){
@@ -76,6 +88,7 @@ public class SettingView extends JFrame {
 		JRadioButton tenthTemplateSelectButton = new JRadioButton();
 
 		this.templateSelectButton = new ButtonGroup();
+		this.templateSelectButtonPanel = new JPanel();
 
 		this.templateSelectButton.add(firstTemplateSelectButton);
 		this.templateSelectButton.add(secondTemplateSelectButton);
@@ -88,27 +101,32 @@ public class SettingView extends JFrame {
 		this.templateSelectButton.add(ninthTemplateSelectButton);
 		this.templateSelectButton.add(tenthTemplateSelectButton);
 
-		this.settingJPanel.add(firstTemplateSelectButton);
-		this.settingJPanel.add(secondTemplateSelectButton);
-		this.settingJPanel.add(thirdTemplateSelectButton);
-		this.settingJPanel.add(fourthTemplateSelectButton);
-		this.settingJPanel.add(fifthTemplateSelectButton);
-		this.settingJPanel.add(sixthTemplateSelectButton);
-		this.settingJPanel.add(seventhTemplateSelectButton);
-		this.settingJPanel.add(eighthTemplateSelectButton);
-		this.settingJPanel.add(ninthTemplateSelectButton);
-		this.settingJPanel.add(tenthTemplateSelectButton);
+		this.templateSelectButtonPanel.add(firstTemplateSelectButton);
+		this.templateSelectButtonPanel.add(secondTemplateSelectButton);
+		this.templateSelectButtonPanel.add(thirdTemplateSelectButton);
+		this.templateSelectButtonPanel.add(fourthTemplateSelectButton);
+		this.templateSelectButtonPanel.add(fifthTemplateSelectButton);
+		this.templateSelectButtonPanel.add(sixthTemplateSelectButton);
+		this.templateSelectButtonPanel.add(seventhTemplateSelectButton);
+		this.templateSelectButtonPanel.add(eighthTemplateSelectButton);
+		this.templateSelectButtonPanel.add(ninthTemplateSelectButton);
+		this.templateSelectButtonPanel.add(tenthTemplateSelectButton);
+
+		this.settingJPanel.add(this.templateSelectButtonPanel);
 	}
 
 	private void setUpButton(){
 		this.saveButton = new JButton();
 		this.saveAndExitButton = new JButton();
+		this.saveButtonPanel = new JPanel();
 
 		this.saveButton.setText(FrameComponentName.SAVE_SETTING_BUTTON);
 		this.saveAndExitButton.setText(FrameComponentName.EXIT_SETTING_BUTTON);
 
-		this.settingJPanel.add(this.saveButton);
-		this.settingJPanel.add(this.saveAndExitButton);
+		this.saveButtonPanel.add(this.saveButton);
+		this.saveButtonPanel.add(this.saveAndExitButton);
+
+		this.settingJPanel.add(this.saveButtonPanel);
 	}
 
 }
