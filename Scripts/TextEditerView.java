@@ -58,7 +58,6 @@ public class TextEditerView extends JFrame{
 		JMenuBar menuBar = new JMenuBar();
 
 		JMenu fileMenu = new JMenu(FrameComponentName.FILE_MENU);
-		//JMenu fileSetting = new JMenu(FrameComponentName.SETTING_BUTTON);
 		JMenuItem fileSetting = new JMenuItem(FrameComponentName.SETTING_BUTTON);
 
 		menuBar.add(fileMenu);
