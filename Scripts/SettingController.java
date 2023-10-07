@@ -13,6 +13,12 @@ public class SettingController extends Object implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		String actionCommand = e.getActionCommand();
 
+		switch(actionCommand){
+			case FrameComponentName.EXIT_SETTING_BUTTON -> {
+				this.stringConversionDataModel.frameChangeSettingToTextEditer();
+			}
+		}
 	}
 }
