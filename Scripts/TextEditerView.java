@@ -1,4 +1,3 @@
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -6,16 +5,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import java.awt.Container;
-import java.awt.BorderLayout;
 
 public class TextEditerView extends JFrame{
 
 	private TextEditerController textEditerController;
 
 	private JFrame myDefinFrame;
-
-	private Container textEditerContainer;
 
 	private JPanel textEditerJPanel;
 
@@ -35,7 +30,6 @@ public class TextEditerView extends JFrame{
 	}
 
 	private void initializeTextEditer(){
-		this.textEditerContainer = myDefinFrame.getContentPane();
 		this.textEditerJPanel = new JPanel();
 
 		this.setUpMenu();
