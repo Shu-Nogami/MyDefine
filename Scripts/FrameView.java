@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -61,5 +63,9 @@ public class FrameView extends JFrame {
 
 	private void showWindow(){
 		myDefineFrame.setVisible(true);
+	}
+
+	public void writeTextEditerString(File aOpeningTextEdterFile) throws IOException{
+		this.textEditerView.writeTextEditer(aOpeningTextEdterFile);
 	}
 }
