@@ -1,3 +1,10 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -21,6 +28,8 @@ public class TextEditerView extends JFrame{
 	private final Integer TEXTEDITER_AREACOLUMNS = 45;
 
 	private final Integer TEXTEDITER_AREAROWS = 20;
+
+	private final String LINE_SEPARATOR = System.getProperty("line.separator");
 	
 
 	public TextEditerView(StringConversionDataModel aStringConversionDataModel, JFrame aMyDefineFrame) {
@@ -77,5 +86,46 @@ public class TextEditerView extends JFrame{
 		fileSaveAs.addActionListener(this.textEditerController);
 
 		this.myDefinFrame.setJMenuBar(menuBar);
+	}
+
+	public File openFileDialog(){
+		JFileChooser fileChooser = new JFileChooser();
+		File expandFile;
+
+		int selected = fileChooser.showOpenDialog(fileChooser);
+		if(selected == JFileChooser.APPROVE_OPTION){
+			expandFile = fileChooser.getSelectedFile();
+		}
+		else{
+			expandFile = new File("");
+		}
+
+		return expandFile;
+	}
+
+	public void writeTextEditer(File aOpeningTextEdterFile) throws IOException{
+		BufferedReader bufferedReader = new BufferedReader(new FileReader(aOpeningTextEdterFile));
+		String readTextLine = bufferedReader.readLine();
+		StringBuilder writingText = new StringBuilder();
+
+		while(readTextLine != null){
+			this.resetStringBuilder(writingText);
+			writingText.append(readTextLine);
+			writingText.append(this.LINE_SEPARATOR);
+			this.addTextToTextEditerArea(writingText.toString());
+
+			readTextLine = bufferedReader.readLine();
+		}
+
+		bufferedReader.close();
+	}
+
+	private void addTextToTextEditerArea(String addString){
+		this.textEditerArea.append(addString);
+	}
+
+	private StringBuilder resetStringBuilder(StringBuilder aStringBuilder){
+		aStringBuilder.delete(0, aStringBuilder.length());
+		return aStringBuilder;
 	}
 }
