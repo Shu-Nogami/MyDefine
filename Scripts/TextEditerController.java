@@ -23,10 +23,13 @@ public class TextEditerController extends Object implements ActionListener{
 			}
 			case FrameComponentName.FILE_OPEN -> {
 				try {
-					this.stringConversionDataModel.opneTextDiterFile(this.textEditerView.openFileDialog());
+					this.stringConversionDataModel.openTextDiterFile(this.textEditerView.openFileDialog());
 				} catch (IOException exception) {
 					exception.printStackTrace();
 				}
+			}
+			case FrameComponentName.FILE_SAVE_AS -> {
+
 			}
 		}
 	}

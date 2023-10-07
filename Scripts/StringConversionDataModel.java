@@ -20,7 +20,7 @@ public class StringConversionDataModel extends Object {
 		this.frameView.showTextEditerPanel();
 	}
 
-	public void opneTextDiterFile(File aOpeningTextEdterFile) throws IOException{
+	public void openTextDiterFile(File aOpeningTextEdterFile) throws IOException{
 		this.openingTextEditerFile = aOpeningTextEdterFile;
 		this.frameView.writeTextEditerString(aOpeningTextEdterFile);
 	}
