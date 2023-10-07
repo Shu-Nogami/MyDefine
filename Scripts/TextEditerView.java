@@ -108,6 +108,8 @@ public class TextEditerView extends JFrame{
 		String readTextLine = bufferedReader.readLine();
 		StringBuilder writingText = new StringBuilder();
 
+		this.textEditerArea.setText("");
+
 		while(readTextLine != null){
 			this.resetStringBuilder(writingText);
 			writingText.append(readTextLine);
