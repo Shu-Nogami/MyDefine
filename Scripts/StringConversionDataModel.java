@@ -11,4 +11,8 @@ public class StringConversionDataModel extends Object {
 		this.frameView.showSettingPanel();
 	}
 
+	public void frameChangeSettingToTextEditer(){
+		this.frameView.showTextEditerPanel();
+	}
+
 }
