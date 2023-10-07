@@ -6,13 +6,9 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 
-import java.awt.Container;
-
 public class SettingView extends JFrame {
 
 	private SettingController settingController;
-
-	private Container frameContentPane;
 
 	private JPanel settingJPanel;
 
@@ -36,9 +32,8 @@ public class SettingView extends JFrame {
 
 	private final Integer TEXT_CONVERSION_AREA_ROWS = 4;
 
-	public SettingView(StringConversionDataModel aStringConversionDataModel, Container aframeContainer) {
+	public SettingView(StringConversionDataModel aStringConversionDataModel) {
 		this.settingController = new SettingController(this, aStringConversionDataModel);
-		this.frameContentPane = aframeContainer;
 		this.initializeSettingView();
 	}
 
