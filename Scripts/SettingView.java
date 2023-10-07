@@ -122,6 +122,9 @@ public class SettingView extends JFrame {
 		this.saveButtonPanel.add(this.saveButton);
 		this.saveButtonPanel.add(this.saveAndExitButton);
 
+		this.saveButton.addActionListener(this.settingController);
+		this.saveAndExitButton.addActionListener(this.settingController);
+
 		this.settingJPanel.add(this.saveButtonPanel);
 	}
 }
