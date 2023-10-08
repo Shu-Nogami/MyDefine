@@ -20,7 +20,7 @@ public class TextEditerController extends Object implements ActionListener{
 	}
 
 	public void saveAsFile(File aSaveAsTextEditerFile) throws IOException {
-
+		this.stringConversionDataModel.saveAsFile(aSaveAsTextEditerFile, this.textEditerView.getTextAreaString());
 	}
 
 	public void actionPerformed(ActionEvent e){
