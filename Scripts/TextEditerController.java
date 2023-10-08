@@ -37,6 +37,13 @@ public class TextEditerController extends Object implements ActionListener{
 					exception.printStackTrace();
 				}
 			}
+			case FrameComponentName.FILE_SAVE -> {
+				try {
+					this.stringConversionDataModel.saveFile(this.textEditerView.getTextAreaString());
+				} catch (IOException exception) {
+					exception.printStackTrace();
+				}
+			}
 			case FrameComponentName.FILE_SAVE_AS -> {
 				try {
 					this.textEditerView.saveAsFileDialog();

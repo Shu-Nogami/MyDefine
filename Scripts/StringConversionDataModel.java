@@ -27,6 +27,10 @@ public class StringConversionDataModel extends Object {
 		this.frameView.writeTextEditerString(aOpeningTextEdterFile);
 	}
 
+	public void saveFile(String aTextEditerAreaString) throws IOException {
+		this.fileSaveModel.saveFile(this.openingTextEditerFile, aTextEditerAreaString);
+	}
+
 	public void saveAsFile(File aSaveAsFile, String aTextEditerAreaString) throws IOException {
 		this.fileSaveModel.saveFile(aSaveAsFile, aTextEditerAreaString);
 	}
