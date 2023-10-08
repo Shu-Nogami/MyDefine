@@ -15,8 +15,12 @@ public class TextEditerController extends Object implements ActionListener{
 		this.textEditerView = aTextEditerView;
 	}
 
-	public void openingFile(File aOpeningTextEdterFile) throws IOException{
-		this.stringConversionDataModel.openTextDiterFile(aOpeningTextEdterFile);
+	public void openingFile(File aOpeningTextEdterFile) throws IOException {
+		this.stringConversionDataModel.openTextEditerFile(aOpeningTextEdterFile);
+	}
+
+	public void saveAsFile(File aSaveAsTextEditerFile) throws IOException {
+
 	}
 
 	public void actionPerformed(ActionEvent e){
@@ -34,7 +38,11 @@ public class TextEditerController extends Object implements ActionListener{
 				}
 			}
 			case FrameComponentName.FILE_SAVE_AS -> {
-
+				try {
+					this.textEditerView.saveAsFileDialog();
+				} catch (IOException exception) {
+					exception.printStackTrace();
+				}
 			}
 		}
 	}
