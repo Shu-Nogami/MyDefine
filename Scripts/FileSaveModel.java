@@ -8,12 +8,12 @@ public class FileSaveModel extends FileBase {
 
 	}
 
-	public void saveAsFile(File aSaveAsFile, String aTextEditerAreaString) throws IOException{
-		FileWriter saveAsFileWriter = new FileWriter(aSaveAsFile);
+	public void saveFile(File aSaveFile, String aTextEditerAreaString) throws IOException{
+		FileWriter saveFileWriter = new FileWriter(aSaveFile);
 		
-		saveAsFileWriter.write(aTextEditerAreaString);
+		saveFileWriter.write(aTextEditerAreaString);
 
-		saveAsFileWriter.close();
+		saveFileWriter.close();
 	}
 
 }

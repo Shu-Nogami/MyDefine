@@ -28,6 +28,6 @@ public class StringConversionDataModel extends Object {
 	}
 
 	public void saveAsFile(File aSaveAsFile, String aTextEditerAreaString) throws IOException {
-		this.fileSaveModel.saveAsFile(aSaveAsFile, aTextEditerAreaString);
+		this.fileSaveModel.saveFile(aSaveAsFile, aTextEditerAreaString);
 	}
 }
