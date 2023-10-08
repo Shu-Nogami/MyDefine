@@ -88,19 +88,12 @@ public class TextEditerView extends JFrame{
 		this.myDefinFrame.setJMenuBar(menuBar);
 	}
 
-	public File openFileDialog(){
-		JFileChooser fileChooser = new JFileChooser();
-		File expandFile;
-
-		int selected = fileChooser.showOpenDialog(fileChooser);
-		if(selected == JFileChooser.APPROVE_OPTION){
-			expandFile = fileChooser.getSelectedFile();
+	public void openFileDialog() throws IOException{
+		JFileChooser openFileChooser = new JFileChooser();
+		Integer selectedOpenFile = openFileChooser.showOpenDialog(openFileChooser);
+		if(selectedOpenFile == JFileChooser.APPROVE_OPTION){
+			this.textEditerController.openingFile(openFileChooser.getSelectedFile());
 		}
-		else{
-			expandFile = new File("");
-		}
-
-		return expandFile;
 	}
 
 	public void writeTextEditer(File aOpeningTextEdterFile) throws IOException{

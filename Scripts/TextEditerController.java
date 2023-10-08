@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 
 public class TextEditerController extends Object implements ActionListener{
@@ -14,6 +15,10 @@ public class TextEditerController extends Object implements ActionListener{
 		this.textEditerView = aTextEditerView;
 	}
 
+	public void openingFile(File aOpeningTextEdterFile) throws IOException{
+		this.stringConversionDataModel.openTextDiterFile(aOpeningTextEdterFile);
+	}
+
 	public void actionPerformed(ActionEvent e){
 		String actionCommand = e.getActionCommand();
 
@@ -23,7 +28,7 @@ public class TextEditerController extends Object implements ActionListener{
 			}
 			case FrameComponentName.FILE_OPEN -> {
 				try {
-					this.stringConversionDataModel.openTextDiterFile(this.textEditerView.openFileDialog());
+					this.textEditerView.openFileDialog();
 				} catch (IOException exception) {
 					exception.printStackTrace();
 				}
