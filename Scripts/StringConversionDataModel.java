@@ -1,5 +1,8 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class StringConversionDataModel extends Object {
 
@@ -9,9 +12,19 @@ public class StringConversionDataModel extends Object {
 
 	private File openingTextEditerFile;
 
+	private List<Map<String, String>> stringConversionDataMap;
+
+	private final String CONVERSION_DATA_FILE_PATH = "../conversionData.txt";
+
 	public StringConversionDataModel() {
+		try {
+			this.searchConversionDataFile();
+		} catch (IOException exception) {
+			exception.printStackTrace();
+		}
 		this.frameView = new FrameView(this);
 		this.fileSaveModel = new FileSaveModel();
+		this.stringConversionDataMap = new ArrayList<>();
 	}
 
 	public void frameChangeTextEditerToSetting(){
@@ -33,5 +46,20 @@ public class StringConversionDataModel extends Object {
 
 	public void saveAsFile(File aSaveAsFile, String aTextEditerAreaString) throws IOException {
 		this.fileSaveModel.saveFile(aSaveAsFile, aTextEditerAreaString);
+	}
+
+	private void searchConversionDataFile() throws IOException{
+		File conversionDataFile = new File(CONVERSION_DATA_FILE_PATH);
+		if(conversionDataFile.exists()){
+			
+		}
+		else{
+			this.createConversionDataFile();
+		}
+	}
+
+	private void createConversionDataFile() throws IOException{
+		File conversionDataFile = new File(CONVERSION_DATA_FILE_PATH);
+		conversionDataFile.createNewFile();
 	}
 }
