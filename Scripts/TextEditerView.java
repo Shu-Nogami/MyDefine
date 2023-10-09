@@ -67,7 +67,7 @@ public class TextEditerView extends JFrame{
 		JMenuBar menuBar = new JMenuBar();
 
 		JMenu fileMenu = new JMenu(FrameComponentName.FILE_MENU);
-		JMenuItem fileSetting = new JMenuItem(FrameComponentName.SETTING_BUTTON);
+		JMenu fileSetting = new JMenu(FrameComponentName.SETTING_BUTTON);
 
 		menuBar.add(fileMenu);
 		menuBar.add(fileSetting);
@@ -75,15 +75,26 @@ public class TextEditerView extends JFrame{
 		JMenuItem fileOpen = new JMenuItem(FrameComponentName.FILE_OPEN);
 		JMenuItem fileSave = new JMenuItem(FrameComponentName.FILE_SAVE);
 		JMenuItem fileSaveAs = new JMenuItem(FrameComponentName.FILE_SAVE_AS);
+		JMenuItem fileImport = new JMenuItem(FrameComponentName.IMPORT_BUTTON);
+		JMenuItem fileExport = new JMenuItem(FrameComponentName.EXPORT_BUTTON);
+
+		JMenuItem fileUserSetting = new JMenuItem(FrameComponentName.USER_SETTING_BUTTON);
 
 		fileMenu.add(fileOpen);
 		fileMenu.add(fileSave);
 		fileMenu.add(fileSaveAs);
+		fileMenu.add(fileImport);
+		fileMenu.add(fileExport);
 
-		fileSetting.addActionListener(this.textEditerController);
+		fileSetting.add(fileUserSetting);
+
+		fileImport.addActionListener(this.textEditerController);
+		fileExport.addActionListener(this.textEditerController);
 		fileOpen.addActionListener(this.textEditerController);
 		fileSave.addActionListener(this.textEditerController);
 		fileSaveAs.addActionListener(this.textEditerController);
+
+		fileUserSetting.addActionListener(this.textEditerController);
 
 		this.myDefinFrame.setJMenuBar(menuBar);
 	}
