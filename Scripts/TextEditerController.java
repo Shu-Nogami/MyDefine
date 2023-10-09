@@ -27,7 +27,7 @@ public class TextEditerController extends Object implements ActionListener{
 		String actionCommand = e.getActionCommand();
 
 		switch(actionCommand){
-			case FrameComponentName.SETTING_BUTTON -> {
+			case FrameComponentName.USER_SETTING_BUTTON -> {
 				this.stringConversionDataModel.frameChangeTextEditerToSetting();
 			}
 			case FrameComponentName.FILE_OPEN -> {
