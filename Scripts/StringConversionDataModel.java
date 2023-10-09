@@ -10,6 +10,8 @@ public class StringConversionDataModel extends Object {
 
 	private FileSaveModel fileSaveModel;
 
+	private ConversionDataFileRoadModel conversionDataFileRoadModel;
+
 	private File openingTextEditerFile;
 
 	private List<Map<String, String>> stringConversionDataMap;
@@ -17,6 +19,8 @@ public class StringConversionDataModel extends Object {
 	private final String CONVERSION_DATA_FILE_PATH = "../conversionData.txt";
 
 	public StringConversionDataModel() {
+		this.stringConversionDataMap = new ArrayList<>();
+		this.conversionDataFileRoadModel = new ConversionDataFileRoadModel();
 		try {
 			this.searchConversionDataFile();
 		} catch (IOException exception) {
@@ -24,7 +28,6 @@ public class StringConversionDataModel extends Object {
 		}
 		this.frameView = new FrameView(this);
 		this.fileSaveModel = new FileSaveModel();
-		this.stringConversionDataMap = new ArrayList<>();
 	}
 
 	public void frameChangeTextEditerToSetting(){
@@ -51,7 +54,7 @@ public class StringConversionDataModel extends Object {
 	private void searchConversionDataFile() throws IOException{
 		File conversionDataFile = new File(CONVERSION_DATA_FILE_PATH);
 		if(conversionDataFile.exists()){
-			
+			this.stringConversionDataMap = this.conversionDataFileRoadModel.getConversionData(conversionDataFile, this.stringConversionDataMap);
 		}
 		else{
 			this.createConversionDataFile();
