@@ -4,6 +4,8 @@ public class FrameComponentName {
 
 	public static final String SETTING_BUTTON = "Setting";
 
+	public static final String USER_SETTING_BUTTON = "User Setting";
+
 	public static final String FILE_SAVE = "Save";
 
 	public static final String FILE_SAVE_AS = "Save as";
