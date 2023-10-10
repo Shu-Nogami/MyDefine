@@ -14,12 +14,12 @@ public class StringConversionDataModel extends Object {
 
 	private File openingTextEditerFile;
 
-	private List<Map<String, String>> stringConversionDataMap;
+	private List<Map<String, String>> stringConversionDataList;
 
 	private final String CONVERSION_DATA_FILE_PATH = "../conversionData.txt";
 
 	public StringConversionDataModel() {
-		this.stringConversionDataMap = new ArrayList<>();
+		this.stringConversionDataList = new ArrayList<>();
 		this.conversionDataFileRoadModel = new ConversionDataFileRoadModel();
 		try {
 			this.searchConversionDataFile();
@@ -54,7 +54,7 @@ public class StringConversionDataModel extends Object {
 	private void searchConversionDataFile() throws IOException{
 		File conversionDataFile = new File(CONVERSION_DATA_FILE_PATH);
 		if(conversionDataFile.exists()){
-			this.stringConversionDataMap = this.conversionDataFileRoadModel.getConversionData(conversionDataFile, this.stringConversionDataMap);
+			this.stringConversionDataList = this.conversionDataFileRoadModel.getConversionData(conversionDataFile, this.stringConversionDataList);
 		}
 		else{
 			this.createConversionDataFile();
