@@ -16,7 +16,7 @@ public class StringConversionDataModel extends Object {
 
 	private List<Map<String, String>> stringConversionDataList;
 
-	private final String CONVERSION_DATA_FILE_PATH = "../conversionData.txt";
+	private final String CONVERSION_DATA_FILE_PATH = "./conversionData.txt";
 
 	public StringConversionDataModel() {
 		this.stringConversionDataList = new ArrayList<>();
