@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.BoxLayout;
@@ -38,6 +39,19 @@ public class SettingView extends JFrame {
 	private final Integer TEXT_CONVERSION_AREA_ROWS = 4;
 
 	private final Integer TEMPLATE_SELECT_BUTTON_MAX = 10;
+
+	private final List<String> CONVERSION_NAME_STRING_LIST = new ArrayList<>(Arrays.asList(
+		FrameComponentName.CONVERSION_FIRST_MAP,
+		FrameComponentName.CONVERSION_SECOND_MAP,
+		FrameComponentName.CONVERSION_THIRD_MAP,
+		FrameComponentName.CONVERSION_FOURTH_MAP,
+		FrameComponentName.CONVERSION_FIFTH_MAP,
+		FrameComponentName.CONVERSION_SIXTH_MAP,
+		FrameComponentName.CONVERSION_SEVENTH_MAP,
+		FrameComponentName.CONVERSION_EIGHTH_MAP,
+		FrameComponentName.CONVERSION_NINTH_MAP,
+		FrameComponentName.CONVERSION_TENTH_MAP
+	));
 
 	public SettingView(StringConversionDataModel aStringConversionDataModel) {
 		this.settingController = new SettingController(this, aStringConversionDataModel);
@@ -85,6 +99,8 @@ public class SettingView extends JFrame {
         for(Integer i = 0;i < this.TEMPLATE_SELECT_BUTTON_MAX;i++){
 			templateSelecButton = new JRadioButton();
 			this.templateSelectButtonList.add(templateSelecButton);
+			this.templateSelectButtonList.get(i).setActionCommand(this.CONVERSION_NAME_STRING_LIST.get(i));
+			this.templateSelectButtonList.get(i).addActionListener(this.settingController);
 			this.templateSelectButtonGroup.add(this.templateSelectButtonList.get(i));
 			this.templateSelectButtonPanel.add(this.templateSelectButtonList.get(i));
 		}
