@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -26,11 +29,15 @@ public class SettingView extends JFrame {
 	
 	private JButton saveButton;
 
-	private ButtonGroup templateSelectButton;
+	private List<JRadioButton> templateSelectButtonList;
+
+	private ButtonGroup templateSelectButtonGroup;
 
 	private final Integer TEXT_CONVERSION_AREA_COLUMNS = 30;
 
 	private final Integer TEXT_CONVERSION_AREA_ROWS = 4;
+
+	private final Integer TEMPLATE_SELECT_BUTTON_MAX = 10;
 
 	public SettingView(StringConversionDataModel aStringConversionDataModel) {
 		this.settingController = new SettingController(this, aStringConversionDataModel);
@@ -70,44 +77,19 @@ public class SettingView extends JFrame {
 	}
 
 	private void setUpTemplateSelectButton(){
-		JRadioButton firstTemplateSelectButton = new JRadioButton();
-		JRadioButton secondTemplateSelectButton = new JRadioButton();
-		JRadioButton thirdTemplateSelectButton = new JRadioButton();
-		JRadioButton fourthTemplateSelectButton = new JRadioButton();
-		JRadioButton fifthTemplateSelectButton = new JRadioButton();
-		JRadioButton sixthTemplateSelectButton = new JRadioButton();
-		JRadioButton seventhTemplateSelectButton = new JRadioButton();
-		JRadioButton eighthTemplateSelectButton = new JRadioButton();
-		JRadioButton ninthTemplateSelectButton = new JRadioButton();
-		JRadioButton tenthTemplateSelectButton = new JRadioButton();
-
-		this.templateSelectButton = new ButtonGroup();
+		JRadioButton templateSelecButton;
+		this.templateSelectButtonList = new ArrayList<>();
+		this.templateSelectButtonGroup = new ButtonGroup();
 		this.templateSelectButtonPanel = new JPanel();
 
-		this.templateSelectButton.add(firstTemplateSelectButton);
-		this.templateSelectButton.add(secondTemplateSelectButton);
-		this.templateSelectButton.add(thirdTemplateSelectButton);
-		this.templateSelectButton.add(fourthTemplateSelectButton);
-		this.templateSelectButton.add(fifthTemplateSelectButton);
-		this.templateSelectButton.add(sixthTemplateSelectButton);
-		this.templateSelectButton.add(seventhTemplateSelectButton);
-		this.templateSelectButton.add(eighthTemplateSelectButton);
-		this.templateSelectButton.add(ninthTemplateSelectButton);
-		this.templateSelectButton.add(tenthTemplateSelectButton);
+        for(Integer i = 0;i < this.TEMPLATE_SELECT_BUTTON_MAX;i++){
+			templateSelecButton = new JRadioButton();
+			this.templateSelectButtonList.add(templateSelecButton);
+			this.templateSelectButtonGroup.add(this.templateSelectButtonList.get(i));
+			this.templateSelectButtonPanel.add(this.templateSelectButtonList.get(i));
+		}
 
-		firstTemplateSelectButton.setSelected(true);
-
-		this.templateSelectButtonPanel.add(firstTemplateSelectButton);
-		this.templateSelectButtonPanel.add(secondTemplateSelectButton);
-		this.templateSelectButtonPanel.add(thirdTemplateSelectButton);
-		this.templateSelectButtonPanel.add(fourthTemplateSelectButton);
-		this.templateSelectButtonPanel.add(fifthTemplateSelectButton);
-		this.templateSelectButtonPanel.add(sixthTemplateSelectButton);
-		this.templateSelectButtonPanel.add(seventhTemplateSelectButton);
-		this.templateSelectButtonPanel.add(eighthTemplateSelectButton);
-		this.templateSelectButtonPanel.add(ninthTemplateSelectButton);
-		this.templateSelectButtonPanel.add(tenthTemplateSelectButton);
-
+		this.templateSelectButtonList.get(0).setSelected(true);
 		this.settingJPanel.add(this.templateSelectButtonPanel);
 	}
 
@@ -126,6 +108,10 @@ public class SettingView extends JFrame {
 		this.saveAndExitButton.addActionListener(this.settingController);
 
 		this.settingJPanel.add(this.saveButtonPanel);
+	}
+
+	public void resetTemplateSelectButton(){
+
 	}
 
 	public void setTextConversionAreaString(String aTextBeforeConversionAreaString, String aTextAfterConversionAreaString){
