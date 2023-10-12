@@ -110,8 +110,9 @@ public class SettingView extends JFrame {
 		this.settingJPanel.add(this.saveButtonPanel);
 	}
 
-	public void resetTemplateSelectButton(){
-
+	public void reviewSetting(String aTextBeforeConversionAreaString, String aTextAfterConversionAreaString){
+		this.templateSelectButtonList.get(0).setSelected(true);
+		this.setTextConversionAreaString(aTextBeforeConversionAreaString, aTextAfterConversionAreaString);
 	}
 
 	public void setTextConversionAreaString(String aTextBeforeConversionAreaString, String aTextAfterConversionAreaString){
