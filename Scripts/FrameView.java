@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -59,6 +60,18 @@ public class FrameView extends JFrame {
 	
 	public void showSettingPanel(){
 		this.viewPanelsCardLayout.last(this.framePanel);
+	}
+
+	public void updateConversionAreaString(Map<String, String> aTextConversionAreaMap){
+		String aTextBeforeConversionAreaString = new String();
+		String aTextAfterConversionAreaString = new String();
+
+		for (Map.Entry<String, String> aConversionAreaMap : aTextConversionAreaMap.entrySet()) {
+			aTextBeforeConversionAreaString = aConversionAreaMap.getKey();
+			aTextAfterConversionAreaString = aConversionAreaMap.getValue();
+		}
+
+		this.settingView.reviewSetting(aTextBeforeConversionAreaString, aTextAfterConversionAreaString);
 	}
 
 	private void showWindow(){
