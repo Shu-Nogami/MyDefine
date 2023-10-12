@@ -29,38 +29,44 @@ public class ConversionDataFileRoadModel extends FileBase {
 		while(readLine != null){
 			if(readLine.equals(this.BEFORE_CONVERSION_STRING)){
 				if(!isBeforeConversionData){
-					System.out.println(conversionBeforeDataBuilder);
 					conversionDataMap.put(conversionBeforeDataBuilder.toString(), conversionAfterDataBuilder.toString());
+					aStringConversionDataMap.add(conversionDataMap);
+					conversionDataMap = new HashMap<>();
 					conversionBeforeDataBuilder = this.resetStringBuilder(conversionBeforeDataBuilder);
 					conversionAfterDataBuilder = this.resetStringBuilder(conversionAfterDataBuilder);
 				}
 				isBeforeConversionData = true;
+				readLine = conversionDataFileReader.readLine();
+				this.setReadStringBuilder(readLine, conversionBeforeDataBuilder, false);
 				readLine = conversionDataFileReader.readLine();
 				continue;
 			}
 			if(readLine.equals(this.AFTER_CONVERSION_STRING)){
 				isBeforeConversionData = false;
 				readLine = conversionDataFileReader.readLine();
+				this.setReadStringBuilder(readLine, conversionAfterDataBuilder, false);
+				readLine = conversionDataFileReader.readLine();
 				continue;
 			}
 			if(isBeforeConversionData){
-				this.setReadStringBuilder(readLine, conversionBeforeDataBuilder);
+				this.setReadStringBuilder(readLine, conversionBeforeDataBuilder, true);
 			}
 			if(!isBeforeConversionData){
-				this.setReadStringBuilder(readLine, conversionAfterDataBuilder);
+				this.setReadStringBuilder(readLine, conversionAfterDataBuilder, true);
 			}
 			readLine = conversionDataFileReader.readLine();
 		}
 
 		conversionDataFileReader.close();
-		aStringConversionDataMap.add(conversionDataMap);
 
 		return aStringConversionDataMap;
 	}
 
-	private StringBuilder setReadStringBuilder(String aReadLine, StringBuilder aConversionDataBuilder){
+	private StringBuilder setReadStringBuilder(String aReadLine, StringBuilder aConversionDataBuilder, boolean isAddLineSeparator){
+		if(isAddLineSeparator){
+		    aConversionDataBuilder.append(this.LINE_SEPARATOR);
+		}
 		aConversionDataBuilder.append(aReadLine);
-		aConversionDataBuilder.append(this.LINE_SEPARATOR);
 		return aConversionDataBuilder;
 	}
 

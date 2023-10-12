@@ -127,4 +127,9 @@ public class SettingView extends JFrame {
 
 		this.settingJPanel.add(this.saveButtonPanel);
 	}
+
+	public void setTextConversionAreaString(String aTextBeforeConversionAreaString, String aTextAfterConversionAreaString){
+		this.textBeforeConversionArea.setText(aTextBeforeConversionAreaString);
+		this.textAfterConversionArea.setText(aTextAfterConversionAreaString);
+	}
 }
