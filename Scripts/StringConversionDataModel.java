@@ -31,6 +31,7 @@ public class StringConversionDataModel extends Object {
 	}
 
 	public void frameChangeTextEditerToSetting(){
+		this.frameView.updateConversionAreaString(this.stringConversionDataList.get(0));
 		this.frameView.showSettingPanel();
 	}
 
@@ -52,7 +53,7 @@ public class StringConversionDataModel extends Object {
 	}
 
 	private void searchConversionDataFile() throws IOException{
-		File conversionDataFile = new File(CONVERSION_DATA_FILE_PATH);
+		File conversionDataFile = new File(this.CONVERSION_DATA_FILE_PATH);
 		if(conversionDataFile.exists()){
 			this.stringConversionDataList = this.conversionDataFileRoadModel.getConversionData(conversionDataFile, this.stringConversionDataList);
 		}
@@ -62,7 +63,7 @@ public class StringConversionDataModel extends Object {
 	}
 
 	private void createConversionDataFile() throws IOException{
-		File conversionDataFile = new File(CONVERSION_DATA_FILE_PATH);
+		File conversionDataFile = new File(this.CONVERSION_DATA_FILE_PATH);
 		conversionDataFile.createNewFile();
 	}
 }
