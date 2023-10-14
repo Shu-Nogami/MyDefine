@@ -8,14 +8,6 @@ import java.util.Map;
 
 public class ConversionDataFileRoadModel extends FileBase {
 
-	private final String LINE_SEPARATOR = System.getProperty("line.separator");
-
-	private final String BEFORE_CONVERSION_STRING = "Before:";
-
-	private final String AFTER_CONVERSION_STRING = "After:";
-
-	private final String END_CONVERSION_STRING = "End";
-
 	public ConversionDataFileRoadModel() {
 
 	}
@@ -28,7 +20,7 @@ public class ConversionDataFileRoadModel extends FileBase {
 		boolean isBeforeConversionData = true;
 
 		while(readLine != null){
-			if(readLine.equals(this.BEFORE_CONVERSION_STRING)){
+			if(readLine.equals(ConversionDataFileConstant.BEFORE_CONVERSION_STRING)){
 				if(!isBeforeConversionData){
 				    aStringConversionDataList = this.addListToConversionMap(conversionBeforeDataBuilder, conversionAfterDataBuilder, aStringConversionDataList);
 					conversionBeforeDataBuilder = this.resetStringBuilder(conversionBeforeDataBuilder);
@@ -40,14 +32,14 @@ public class ConversionDataFileRoadModel extends FileBase {
 				readLine = conversionDataFileReader.readLine();
 				continue;
 			}
-			if(readLine.equals(this.AFTER_CONVERSION_STRING)){
+			if(readLine.equals(ConversionDataFileConstant.AFTER_CONVERSION_STRING)){
 				isBeforeConversionData = false;
 				readLine = conversionDataFileReader.readLine();
 				this.setReadStringBuilder(readLine, conversionAfterDataBuilder, false);
 				readLine = conversionDataFileReader.readLine();
 				continue;
 			}
-			if(readLine.equals(this.END_CONVERSION_STRING)){
+			if(readLine.equals(ConversionDataFileConstant.END_CONVERSION_STRING)){
 				aStringConversionDataList = this.addListToConversionMap(conversionBeforeDataBuilder, conversionAfterDataBuilder, aStringConversionDataList);
 				break;
 			}
@@ -67,7 +59,7 @@ public class ConversionDataFileRoadModel extends FileBase {
 
 	private StringBuilder setReadStringBuilder(String aReadLine, StringBuilder aConversionDataBuilder, boolean isAddLineSeparator){
 		if(isAddLineSeparator){
-		    aConversionDataBuilder.append(this.LINE_SEPARATOR);
+		    aConversionDataBuilder.append(ConversionDataFileConstant.LINE_SEPARATOR);
 		}
 		aConversionDataBuilder.append(aReadLine);
 		return aConversionDataBuilder;

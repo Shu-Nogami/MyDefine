@@ -14,12 +14,13 @@ public class StringConversionDataModel extends Object {
 
 	private File openingTextEditerFile;
 
-	private List<Map<String, String>> stringConversionDataList;
+	private File conversionDataFile;
 
-	private final String CONVERSION_DATA_FILE_PATH = "./conversionData.txt";
+	private List<Map<String, String>> stringConversionDataList;
 
 	public StringConversionDataModel() {
 		this.stringConversionDataList = new ArrayList<>();
+		this.fileSaveModel = new FileSaveModel();
 		this.conversionDataFileRoadModel = new ConversionDataFileRoadModel();
 		try {
 			this.searchConversionDataFile();
@@ -27,11 +28,10 @@ public class StringConversionDataModel extends Object {
 			exception.printStackTrace();
 		}
 		this.frameView = new FrameView(this);
-		this.fileSaveModel = new FileSaveModel();
 	}
 
 	public void frameChangeTextEditerToSetting(){
-		this.frameView.updateConversionAreaString(this.stringConversionDataList.get(0));
+		this.frameView.updateConversionAreaString(this.stringConversionDataList.get(0), true);
 		this.frameView.showSettingPanel();
 	}
 
@@ -53,7 +53,7 @@ public class StringConversionDataModel extends Object {
 	}
 
 	private void searchConversionDataFile() throws IOException{
-		File conversionDataFile = new File(this.CONVERSION_DATA_FILE_PATH);
+		File conversionDataFile = new File(ConversionDataFileConstant.CONVERSION_DATA_FILE_PATH);
 		if(conversionDataFile.exists()){
 			this.stringConversionDataList = this.conversionDataFileRoadModel.getConversionData(conversionDataFile, this.stringConversionDataList);
 		}
@@ -63,11 +63,10 @@ public class StringConversionDataModel extends Object {
 	}
 
 	private void createConversionDataFile() throws IOException{
-		File conversionDataFile = new File(this.CONVERSION_DATA_FILE_PATH);
-		conversionDataFile.createNewFile();
+		this.conversionDataFile = this.fileSaveModel.createConversionDataFile(ConversionDataFileConstant.CONVERSION_DATA_FILE_PATH);
 	}
 
 	public void setConversionAreaString(Integer selectRadioNumber){
-		this.frameView.updateConversionAreaString(this.stringConversionDataList.get(selectRadioNumber));
+		this.frameView.updateConversionAreaString(this.stringConversionDataList.get(selectRadioNumber), false);
 	}
 }

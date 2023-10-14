@@ -62,7 +62,7 @@ public class FrameView extends JFrame {
 		this.viewPanelsCardLayout.last(this.framePanel);
 	}
 
-	public void updateConversionAreaString(Map<String, String> aTextConversionAreaMap){
+	public void updateConversionAreaString(Map<String, String> aTextConversionAreaMap, boolean isResetSelectedRadioButton){
 		String aTextBeforeConversionAreaString = new String();
 		String aTextAfterConversionAreaString = new String();
 
@@ -71,7 +71,12 @@ public class FrameView extends JFrame {
 			aTextAfterConversionAreaString = aConversionAreaMap.getValue();
 		}
 
-		this.settingView.reviewSetting(aTextBeforeConversionAreaString, aTextAfterConversionAreaString);
+		if(isResetSelectedRadioButton){
+		    this.settingView.reviewSetting(aTextBeforeConversionAreaString, aTextAfterConversionAreaString);
+		}
+		else{
+			this.settingView.setTextConversionAreaString(aTextBeforeConversionAreaString, aTextAfterConversionAreaString);
+		}
 	}
 
 	private void showWindow(){
