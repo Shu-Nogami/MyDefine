@@ -14,12 +14,13 @@ public class ConversionDataFileRoadModel extends FileBase {
 
 	private final String AFTER_CONVERSION_STRING = "After:";
 
+	private final String END_CONVERSION_STRING = "End";
+
 	public ConversionDataFileRoadModel() {
 
 	}
 
-	public List<Map<String, String>> getConversionData(File aConversionDataFile, List<Map<String, String>> aStringConversionDataMap) throws IOException{
-		Map<String, String> conversionDataMap = new HashMap<>();
+	public List<Map<String, String>> getConversionData(File aConversionDataFile, List<Map<String, String>> aStringConversionDataList) throws IOException{
 		BufferedReader conversionDataFileReader = new BufferedReader(new FileReader(aConversionDataFile));
 		String readLine = conversionDataFileReader.readLine();
 		StringBuilder conversionBeforeDataBuilder = new StringBuilder();
@@ -29,9 +30,7 @@ public class ConversionDataFileRoadModel extends FileBase {
 		while(readLine != null){
 			if(readLine.equals(this.BEFORE_CONVERSION_STRING)){
 				if(!isBeforeConversionData){
-					conversionDataMap.put(conversionBeforeDataBuilder.toString(), conversionAfterDataBuilder.toString());
-					aStringConversionDataMap.add(conversionDataMap);
-					conversionDataMap = new HashMap<>();
+				    aStringConversionDataList = this.addListToConversionMap(conversionBeforeDataBuilder, conversionAfterDataBuilder, aStringConversionDataList);
 					conversionBeforeDataBuilder = this.resetStringBuilder(conversionBeforeDataBuilder);
 					conversionAfterDataBuilder = this.resetStringBuilder(conversionAfterDataBuilder);
 				}
@@ -48,6 +47,10 @@ public class ConversionDataFileRoadModel extends FileBase {
 				readLine = conversionDataFileReader.readLine();
 				continue;
 			}
+			if(readLine.equals(this.END_CONVERSION_STRING)){
+				aStringConversionDataList = this.addListToConversionMap(conversionBeforeDataBuilder, conversionAfterDataBuilder, aStringConversionDataList);
+				break;
+			}
 			if(isBeforeConversionData){
 				this.setReadStringBuilder(readLine, conversionBeforeDataBuilder, true);
 			}
@@ -59,7 +62,7 @@ public class ConversionDataFileRoadModel extends FileBase {
 
 		conversionDataFileReader.close();
 
-		return aStringConversionDataMap;
+		return aStringConversionDataList;
 	}
 
 	private StringBuilder setReadStringBuilder(String aReadLine, StringBuilder aConversionDataBuilder, boolean isAddLineSeparator){
@@ -68,6 +71,13 @@ public class ConversionDataFileRoadModel extends FileBase {
 		}
 		aConversionDataBuilder.append(aReadLine);
 		return aConversionDataBuilder;
+	}
+
+	private List<Map<String, String>> addListToConversionMap(StringBuilder aConversionBeforeDataBuilder, StringBuilder aConversionAfterDataBuilder, List<Map<String, String>> aStringConversionDataList){
+		Map<String, String> conversionDataMap = new HashMap<>();
+		conversionDataMap.put(aConversionBeforeDataBuilder.toString(), aConversionAfterDataBuilder.toString());
+		aStringConversionDataList.add(conversionDataMap);
+		return aStringConversionDataList;
 	}
 
 	private StringBuilder resetStringBuilder(StringBuilder aConversionDataBuilder){
