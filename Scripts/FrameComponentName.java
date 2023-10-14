@@ -30,24 +30,36 @@ public class FrameComponentName {
 
 	public static final String EDIT_MENU = "";
 
-	public static final String CONVERSION_FIRST_MAP = "first conversion map";
+	public enum ConversionNames{
+		conversionFirstMap(0),
+		conversionSecondMap(1),
+		conversionThirdMap(2),
+		conversionFourthMap(3),
+		conversionFifthMap(4),
+		conversionSixthMap(5),
+		conversionSeventhMap(6),
+		conversionEighthMap(7),
+		conversionNinthMap(8),
+		conversionTenthMap(9);
 
-	public static final String CONVERSION_SECOND_MAP = "second conversion map";
+		private Integer id;
 
-	public static final String CONVERSION_THIRD_MAP = "third conversion map";
+		private ConversionNames(Integer id){
+			this.id = id;
+		}
 
-	public static final String CONVERSION_FOURTH_MAP = "fourth conversion map";
+		public Integer getInteger(){
+			return this.id;
+		}
 
-	public static final String CONVERSION_FIFTH_MAP = "fifth conversion map";
-
-	public static final String CONVERSION_SIXTH_MAP = "sixth conversion map";
-
-	public static final String CONVERSION_SEVENTH_MAP = "seventh conversion map";
-
-	public static final String CONVERSION_EIGHTH_MAP = "eighth conversion map";
-
-	public static final String CONVERSION_NINTH_MAP = "ninth conversion map";
-
-	public static final String CONVERSION_TENTH_MAP = "tenth conversion map";
-
+		public static String getConversionNames(final Integer id){
+			ConversionNames[] conversionNames = ConversionNames.values();
+			for (ConversionNames conversionName : conversionNames) {
+				if(conversionName.getInteger() == id){
+					return conversionName.name();
+				}
+			}
+			return null;
+		}
+	}
 }
