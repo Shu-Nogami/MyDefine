@@ -19,35 +19,17 @@ public class SettingController extends Object implements ActionListener{
 			case FrameComponentName.EXIT_SETTING_BUTTON -> {
 				this.stringConversionDataModel.frameChangeSettingToTextEditer();
 			}
-			case FrameComponentName.CONVERSION_FIRST_MAP -> {
-				
+			default -> {
+				this.searchConversionName(actionCommand);
 			}
-			case FrameComponentName.CONVERSION_SECOND_MAP -> {
+		}
+	}
 
-			}
-			case FrameComponentName.CONVERSION_THIRD_MAP -> {
-
-			}
-			case FrameComponentName.CONVERSION_FOURTH_MAP -> {
-
-			}
-			case FrameComponentName.CONVERSION_FIFTH_MAP -> {
-
-			}
-			case FrameComponentName.CONVERSION_SIXTH_MAP -> {
-
-			}
-			case FrameComponentName.CONVERSION_SEVENTH_MAP -> {
-
-			}
-			case FrameComponentName.CONVERSION_EIGHTH_MAP -> {
-
-			}
-			case FrameComponentName.CONVERSION_NINTH_MAP -> {
-
-			}
-			case FrameComponentName.CONVERSION_TENTH_MAP -> {
-				
+	private void searchConversionName(String actionCommandString){
+		System.out.println(actionCommandString);
+		for (FrameComponentName.ConversionNames conversionName : FrameComponentName.ConversionNames.values()) {
+			if(conversionName.name().equals(actionCommandString)){
+				this.stringConversionDataModel.setConversionAreaString(conversionName.getInteger());
 			}
 		}
 	}
