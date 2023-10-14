@@ -66,4 +66,8 @@ public class StringConversionDataModel extends Object {
 		File conversionDataFile = new File(this.CONVERSION_DATA_FILE_PATH);
 		conversionDataFile.createNewFile();
 	}
+
+	public void setConversionAreaString(Integer selectRadioNumber){
+		this.frameView.updateConversionAreaString(this.stringConversionDataList.get(selectRadioNumber));
+	}
 }
