@@ -28,8 +28,7 @@ public class TextEditerView extends JFrame{
 
 	private final Integer TEXTEDITER_AREAROWS = 20;
 
-	private final String LINE_SEPARATOR = System.getProperty("line.separator");
-	
+	private final String LINE_SEPARATOR = System.getProperty("line.separator");	
 
 	public TextEditerView(StringConversionDataModel aStringConversionDataModel, JFrame aMyDefineFrame) {
 		this.textEditerController = new TextEditerController(aStringConversionDataModel, this);
