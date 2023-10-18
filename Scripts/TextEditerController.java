@@ -15,8 +15,8 @@ public class TextEditerController extends Object implements ActionListener{
 		this.textEditerView = aTextEditerView;
 	}
 
-	public void openingFile(File aOpeningTextEdterFile) throws IOException {
-		this.stringConversionDataModel.openTextEditerFile(aOpeningTextEdterFile);
+	public void openingFile(File aOpeningTextEditerFile) throws IOException {
+		this.stringConversionDataModel.openTextEditerFile(aOpeningTextEditerFile);
 	}
 
 	public void saveAsFile(File aSaveAsTextEditerFile) throws IOException {

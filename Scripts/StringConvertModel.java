@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class StringConvertModel {
+public class StringConvertModel extends Object {
 
     private boolean isEqualsString = true;
 

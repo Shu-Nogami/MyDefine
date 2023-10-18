@@ -16,7 +16,7 @@ public class TextEditerView extends JFrame{
 
 	private TextEditerController textEditerController;
 
-	private JFrame myDefinFrame;
+	private JFrame myDefinitionFrame;
 
 	private JPanel textEditerJPanel;
 
@@ -30,9 +30,9 @@ public class TextEditerView extends JFrame{
 
 	private final String LINE_SEPARATOR = System.getProperty("line.separator");	
 
-	public TextEditerView(StringConversionDataModel aStringConversionDataModel, JFrame aMyDefineFrame) {
+	public TextEditerView(StringConversionDataModel aStringConversionDataModel, JFrame aMyDefinitionFrame) {
 		this.textEditerController = new TextEditerController(aStringConversionDataModel, this);
-		this.myDefinFrame = aMyDefineFrame;
+		this.myDefinitionFrame = aMyDefinitionFrame;
 		this.initializeTextEditer();
 	}
 
@@ -94,7 +94,7 @@ public class TextEditerView extends JFrame{
 
 		fileUserSetting.addActionListener(this.textEditerController);
 
-		this.myDefinFrame.setJMenuBar(menuBar);
+		this.myDefinitionFrame.setJMenuBar(menuBar);
 	}
 
 	public void openFileDialog() throws IOException{
