@@ -114,7 +114,23 @@ public class TextEditerView extends JFrame{
 		}
 	}
 
-	public void writeTextEditer(File aOpeningTextEdterFile) throws IOException{
+	public void importFileDialog() throws IOException{
+		JFileChooser importFileChooser = new JFileChooser();
+		Integer selectedOpenFile = importFileChooser.showOpenDialog(importFileChooser);
+		if(selectedOpenFile == JFileChooser.APPROVE_OPTION){
+			this.textEditerController.importFile(importFileChooser.getSelectedFile());
+		}
+	}
+
+	public void exportFileDialog() throws IOException{
+		JFileChooser exportFileChooser = new JFileChooser();
+		Integer selectedOpenFile = exportFileChooser.showSaveDialog(exportFileChooser);
+		if(selectedOpenFile == JFileChooser.APPROVE_OPTION){
+			this.textEditerController.exportFile(exportFileChooser.getSelectedFile());
+		}
+	}
+
+	public void writeFileTextEditer(File aOpeningTextEdterFile) throws IOException{
 		BufferedReader bufferedReader = new BufferedReader(new FileReader(aOpeningTextEdterFile));
 		String readTextLine = bufferedReader.readLine();
 		StringBuilder writingText = new StringBuilder();
@@ -131,6 +147,11 @@ public class TextEditerView extends JFrame{
 		}
 
 		bufferedReader.close();
+	}
+
+	public void writeStringTextEditer(String aConvertedString){
+		this.textEditerArea.setText("");
+		this.addTextToTextEditerArea(aConvertedString);
 	}
 
 	private void addTextToTextEditerArea(String addString){

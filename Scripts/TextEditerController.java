@@ -23,6 +23,14 @@ public class TextEditerController extends Object implements ActionListener{
 		this.stringConversionDataModel.saveAsFile(aSaveAsTextEditerFile, this.textEditerView.getTextAreaString());
 	}
 
+	public void importFile(File aImportFile) throws IOException{
+		this.stringConversionDataModel.importTextEditerFile(aImportFile);
+	}
+
+	public void exportFile(File aExportFile){
+
+	}
+
 	public void actionPerformed(ActionEvent e){
 		String actionCommand = e.getActionCommand();
 
@@ -50,6 +58,16 @@ public class TextEditerController extends Object implements ActionListener{
 				} catch (IOException exception) {
 					exception.printStackTrace();
 				}
+			}
+			case FrameComponentName.IMPORT_BUTTON -> {
+				try {
+					this.textEditerView.importFileDialog();
+				} catch (IOException exception) {
+					exception.printStackTrace();
+				}
+			}
+			case FrameComponentName.EXPORT_BUTTON -> {
+
 			}
 		}
 	}

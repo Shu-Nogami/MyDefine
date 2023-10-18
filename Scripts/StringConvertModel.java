@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -20,42 +22,54 @@ public class StringConvertModel {
 
     public String stringConvert(String aConversionBeforeString, String aConversionAfterString, String aConversionOriginalString){
         StringBuilder convertedStringBuilder = new StringBuilder();
+        List<String> notConveredStringList = new ArrayList<>();
 
-        conversionBeforeStringList = Arrays.asList(aConversionBeforeString.split(HALF_WIDTH_SPACE));
-        conversionAfterStringList = Arrays.asList(aConversionAfterString.split(HALF_WIDTH_SPACE));
-        conversionOriginalStringList = Arrays.asList(aConversionOriginalString.split(HALF_WIDTH_SPACE));
+        conversionBeforeStringList = new LinkedList<>(Arrays.asList(aConversionBeforeString.split(HALF_WIDTH_SPACE)));
+        conversionAfterStringList = new LinkedList<>(Arrays.asList(aConversionAfterString.split(HALF_WIDTH_SPACE)));
+        conversionOriginalStringList = new LinkedList<>(Arrays.asList(aConversionOriginalString.split(HALF_WIDTH_SPACE)));
 
         conversionBeforeStringList = this.divisionColon(conversionBeforeStringList);
         conversionAfterStringList = this.divisionColon(conversionAfterStringList);
         conversionOriginalStringList = this.divisionColon(conversionOriginalStringList);
 
-        IntStream.range(0, conversionOriginalStringList.size()).forEach(i -> {
+        IntStream.range(0, conversionOriginalStringList.size() - 1).forEach(i -> {
             if(this.conversionBeforeStringList.get(i).equals(this.SKIP_WILD_CORD)){
-                convertedStringBuilder.append(conversionOriginalStringList.get(i));
+                notConveredStringList.add(conversionOriginalStringList.get(i));
             }
             else{
                 this.checkEqualsString(Integer.valueOf(i));
-                if(isEqualsString) convertedStringBuilder.append(conversionAfterStringList.get(i));
             }
         });
 
-        if(!isEqualsString) return null;
-        return convertedStringBuilder.toString();
+        if(isEqualsString){
+            IntStream.range(0, conversionAfterStringList.size()).forEach(i -> {
+                if(this.conversionAfterStringList.get(i).equals(this.SKIP_WILD_CORD)){
+                    convertedStringBuilder.append(notConveredStringList.get(0));
+                    notConveredStringList.remove(0);
+                }
+                else{
+                    convertedStringBuilder.append(conversionAfterStringList.get(i));
+                }
+            });
+            convertedStringBuilder.append(ConversionDataFileConstant.LINE_SEPARATOR);
+            return convertedStringBuilder.toString();
+        }
+        return null;
     }
 
-    private List<String> divisionColon(List<String> aConversionString){
+    private List<String> divisionColon(List<String> aConversionStringList){
         String lastStringGroup;
         String lastString;
 
-        lastStringGroup = aConversionString.get(aConversionString.size() - 1);
+        lastStringGroup = aConversionStringList.get(aConversionStringList.size() - 1);
         lastString = lastStringGroup.substring(lastStringGroup.length() - 1);
 
         if(lastString.equals(COLON)){
-            aConversionString.remove(aConversionString.size() - 1);
-            aConversionString.add(lastStringGroup.substring(0, lastStringGroup.length() - 1));
-            aConversionString.add(COLON);
+            aConversionStringList.remove(aConversionStringList.size() - 1);
+            aConversionStringList.add(lastStringGroup.substring(0, lastStringGroup.length() - 1));
+            aConversionStringList.add(COLON);
         }
-        return aConversionString;
+        return aConversionStringList;
     }
 
     private void checkEqualsString(Integer listNumber){

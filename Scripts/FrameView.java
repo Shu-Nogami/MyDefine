@@ -83,7 +83,11 @@ public class FrameView extends JFrame {
 		myDefineFrame.setVisible(true);
 	}
 
-	public void writeTextEditerString(File aOpeningTextEdterFile) throws IOException{
-		this.textEditerView.writeTextEditer(aOpeningTextEdterFile);
+	public void writeTextEditerFileString(File aOpeningTextEdterFile) throws IOException{
+		this.textEditerView.writeFileTextEditer(aOpeningTextEdterFile);
+	}
+
+	public void writeTextEditerString(String aConvertedString){
+		this.textEditerView.writeStringTextEditer(aConvertedString);
 	}
 }

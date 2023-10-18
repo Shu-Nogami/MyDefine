@@ -10,6 +10,8 @@ public class StringConversionDataModel extends Object {
 
 	private FileSaveModel fileSaveModel;
 
+	private FileImportModel fileImportModel;
+
 	private ConversionDataFileRoadModel conversionDataFileRoadModel;
 
 	private File openingTextEditerFile;
@@ -22,6 +24,7 @@ public class StringConversionDataModel extends Object {
 		this.stringConversionDataList = new ArrayList<>();
 		this.fileSaveModel = new FileSaveModel();
 		this.conversionDataFileRoadModel = new ConversionDataFileRoadModel();
+		this.fileImportModel = new FileImportModel();
 		try {
 			this.searchConversionDataFile();
 		} catch (IOException exception) {
@@ -41,7 +44,7 @@ public class StringConversionDataModel extends Object {
 
 	public void openTextEditerFile(File aOpeningTextEdterFile) throws IOException {
 		this.openingTextEditerFile = aOpeningTextEdterFile;
-		this.frameView.writeTextEditerString(aOpeningTextEdterFile);
+		this.frameView.writeTextEditerFileString(aOpeningTextEdterFile);
 	}
 
 	public void saveFile(String aTextEditerAreaString) throws IOException {
@@ -50,6 +53,14 @@ public class StringConversionDataModel extends Object {
 
 	public void saveAsFile(File aSaveAsFile, String aTextEditerAreaString) throws IOException {
 		this.fileSaveModel.saveFile(aSaveAsFile, aTextEditerAreaString);
+	}
+
+	public void importTextEditerFile(File aImportFile) throws IOException{
+		this.frameView.writeTextEditerString(this.fileImportModel.importFile(aImportFile, stringConversionDataList));
+	}
+
+	public void exportTextEditerFile(){
+
 	}
 
 	private void searchConversionDataFile() throws IOException{
