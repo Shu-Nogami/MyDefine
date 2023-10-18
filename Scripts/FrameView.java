@@ -13,13 +13,13 @@ public class FrameView extends JFrame {
 
 	private SettingView settingView;
 
-	private JFrame myDefineFrame;
+	private JFrame myDefinitionFrame;
 
 	private JPanel framePanel;
 
 	private CardLayout viewPanelsCardLayout;
 
-	private final String FRAME_TITLE = "MyDefine";
+	private final String FRAME_TITLE = "MyDefinition";
 
 	private final Integer FRAME_X_SIZE = 600;
 
@@ -28,18 +28,18 @@ public class FrameView extends JFrame {
 
 	public FrameView(StringConversionDataModel aStringConversionDataModel) {
 		this.initializeFrame();
-		this.textEditerView = new TextEditerView(aStringConversionDataModel, this.myDefineFrame);
+		this.textEditerView = new TextEditerView(aStringConversionDataModel, this.myDefinitionFrame);
 		this.settingView = new SettingView(aStringConversionDataModel);
 		this.setUpCardLayout();
 		this.showWindow();
 	}
 
 	private void initializeFrame(){
-		myDefineFrame = new JFrame();
-		myDefineFrame.setTitle(this.FRAME_TITLE);
-		myDefineFrame.setSize(this.FRAME_X_SIZE, this.FRAME_Y_SIZE);
-		myDefineFrame.setLocationRelativeTo(null);
-		myDefineFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		myDefinitionFrame = new JFrame();
+		myDefinitionFrame.setTitle(this.FRAME_TITLE);
+		myDefinitionFrame.setSize(this.FRAME_X_SIZE, this.FRAME_Y_SIZE);
+		myDefinitionFrame.setLocationRelativeTo(null);
+		myDefinitionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	private void setUpCardLayout(){
@@ -50,7 +50,7 @@ public class FrameView extends JFrame {
 		this.framePanel.add(this.textEditerView.getTextEditerPanel());
 		this.framePanel.add(this.settingView.getSettingPanel());
 
-		this.myDefineFrame.getContentPane().add(this.framePanel, BorderLayout.CENTER);
+		this.myDefinitionFrame.getContentPane().add(this.framePanel, BorderLayout.CENTER);
 		this.showTextEditerPanel();
 	}
 
@@ -80,7 +80,7 @@ public class FrameView extends JFrame {
 	}
 
 	private void showWindow(){
-		myDefineFrame.setVisible(true);
+		myDefinitionFrame.setVisible(true);
 	}
 
 	public void writeTextEditerFileString(File aOpeningTextEdterFile) throws IOException{
