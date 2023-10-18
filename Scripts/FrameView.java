@@ -90,4 +90,8 @@ public class FrameView extends JFrame {
 	public void writeTextEditerString(String aConvertedString){
 		this.textEditerView.writeStringTextEditer(aConvertedString);
 	}
+
+	public String getTextAreaString(){
+		return this.textEditerView.getTextAreaString();
+	}
 }

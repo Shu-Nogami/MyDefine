@@ -27,8 +27,8 @@ public class TextEditerController extends Object implements ActionListener{
 		this.stringConversionDataModel.importTextEditerFile(aImportFile);
 	}
 
-	public void exportFile(File aExportFile){
-
+	public void exportFile(File aExportFile) throws IOException{
+		this.stringConversionDataModel.exportTextEditerFile(aExportFile);
 	}
 
 	public void actionPerformed(ActionEvent e){
@@ -67,7 +67,11 @@ public class TextEditerController extends Object implements ActionListener{
 				}
 			}
 			case FrameComponentName.EXPORT_BUTTON -> {
-
+				try {
+					this.textEditerView.exportFileDialog();
+				} catch (IOException exception) {
+					exception.printStackTrace();
+				}
 			}
 		}
 	}

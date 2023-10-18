@@ -50,6 +50,11 @@ public class StringConvertModel {
                 else{
                     convertedStringBuilder.append(conversionAfterStringList.get(i));
                 }
+                if((conversionAfterStringList.size() - 1) != i){
+                    if(!conversionAfterStringList.get(i + 1).equals(this.COLON)){
+                        convertedStringBuilder.append(this.HALF_WIDTH_SPACE);
+                    }
+                }
             });
             convertedStringBuilder.append(ConversionDataFileConstant.LINE_SEPARATOR);
             return convertedStringBuilder.toString();
