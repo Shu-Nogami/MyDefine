@@ -13,7 +13,7 @@ public class FileExportModel extends FileBase {
 		this.stringConvertModel = new StringConvertModel();
 	}
 
-	public void fileExport(File aExportFile, List<Map<String, String>> aStringConversionDataList, String aConvrsionOriginalString) throws IOException{
+	public void exportFile(File aExportFile, List<Map<String, String>> aStringConversionDataList, String aConvrsionOriginalString) throws IOException{
 		String[] conversionOriginalStrings = aConvrsionOriginalString.split(ConversionDataFileConstant.LINE_SEPARATOR);
 		StringBuilder convertedStringBuilder = new StringBuilder();
 		BufferedWriter exportFilWriter = new BufferedWriter(new FileWriter(aExportFile));
@@ -32,7 +32,7 @@ public class FileExportModel extends FileBase {
 				convertedString = null;
 			}
 			else{
-				convertedStringBuilder.append(convertedString);
+				convertedStringBuilder.append(conversionOriginalString);
 				convertedStringBuilder.append(ConversionDataFileConstant.LINE_SEPARATOR);
 			}
 		}

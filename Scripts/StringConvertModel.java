@@ -24,20 +24,33 @@ public class StringConvertModel extends Object {
         StringBuilder convertedStringBuilder = new StringBuilder();
         List<String> notConveredStringList = new ArrayList<>();
 
+        this.isEqualsString = true;
+
         conversionBeforeStringList = new LinkedList<>(Arrays.asList(aConversionBeforeString.split(HALF_WIDTH_SPACE)));
         conversionAfterStringList = new LinkedList<>(Arrays.asList(aConversionAfterString.split(HALF_WIDTH_SPACE)));
         conversionOriginalStringList = new LinkedList<>(Arrays.asList(aConversionOriginalString.split(HALF_WIDTH_SPACE)));
 
-        conversionBeforeStringList = this.divisionColon(conversionBeforeStringList);
-        conversionAfterStringList = this.divisionColon(conversionAfterStringList);
-        conversionOriginalStringList = this.divisionColon(conversionOriginalStringList);
+        if(conversionOriginalStringList.size() > 1){
+            conversionBeforeStringList = this.divisionColon(conversionBeforeStringList);
+            conversionAfterStringList = this.divisionColon(conversionAfterStringList);
+            conversionOriginalStringList = this.divisionColon(conversionOriginalStringList);
+        }
 
-        IntStream.range(0, conversionOriginalStringList.size() - 1).forEach(i -> {
-            if(this.conversionBeforeStringList.get(i).equals(this.SKIP_WILD_CORD)){
-                notConveredStringList.add(conversionOriginalStringList.get(i));
+        IntStream.range(0, conversionOriginalStringList.size()).forEach(i -> {
+            if(this.conversionBeforeStringList.size() <= this.conversionOriginalStringList.size() && this.isEqualsString){
+                if(this.conversionOriginalStringList.get(i).equals("")){
+                    this.conversionBeforeStringList.add(i, HALF_WIDTH_SPACE);
+                    this.conversionAfterStringList.add(i, HALF_WIDTH_SPACE);
+                }
+                else if(this.conversionBeforeStringList.get(i).equals(this.SKIP_WILD_CORD)){
+                    notConveredStringList.add(conversionOriginalStringList.get(i));
+                }
+                else{
+                    this.checkEqualsString(Integer.valueOf(i));
+                }
             }
             else{
-                this.checkEqualsString(Integer.valueOf(i));
+                this.isEqualsString = false;
             }
         });
 

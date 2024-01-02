@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -33,6 +35,8 @@ public class SettingView extends JFrame {
 
 	private ButtonGroup templateSelectButtonGroup;
 
+	private List<Integer> templateSelectedButtonNumberList;
+
 	private final Integer TEXT_CONVERSION_AREA_COLUMNS = 30;
 
 	private final Integer TEXT_CONVERSION_AREA_ROWS = 4;
@@ -46,6 +50,8 @@ public class SettingView extends JFrame {
 
 	private void initializeSettingView(){
 		this.settingJPanel = new JPanel();
+		this.templateSelectedButtonNumberList = new ArrayList<>();
+		this.templateSelectedButtonNumberList.add(0);
 		this.setUpTemplateArea();
 		this.setUpTemplateSelectButton();
 		this.setUpButton();
@@ -120,5 +126,28 @@ public class SettingView extends JFrame {
 	public void setTextConversionAreaString(String aTextBeforeConversionAreaString, String aTextAfterConversionAreaString){
 		this.textBeforeConversionArea.setText(aTextBeforeConversionAreaString);
 		this.textAfterConversionArea.setText(aTextAfterConversionAreaString);
+	}
+
+	public Map<String, String> getConversionAreaStringMap(){
+		Map<String, String> conversionDataStringMap = new HashMap<>();
+		conversionDataStringMap.put(this.textBeforeConversionArea.getText(), this.textAfterConversionArea.getText());
+		return conversionDataStringMap;
+	}
+
+	public void setSelectedButtonNumber(Integer selectedButtonNumber){
+		this.templateSelectedButtonNumberList.add(selectedButtonNumber);
+		if(this.templateSelectedButtonNumberList.size() > 2){
+		    this.templateSelectedButtonNumberList.remove(0);
+		}
+	}
+
+	public Integer getSelectedButtonNumber(boolean isNowSelectedButton){
+		if(isNowSelectedButton) return this.templateSelectedButtonNumberList.get(this.templateSelectedButtonNumberList.size() - 1);
+		else return this.templateSelectedButtonNumberList.get(0);
+	}
+
+	public void resetSelectedButtonList(){
+		this.templateSelectedButtonNumberList.clear();
+		this.templateSelectedButtonNumberList.add(0);
 	}
 }

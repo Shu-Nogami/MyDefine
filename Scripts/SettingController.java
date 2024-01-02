@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class SettingController extends Object implements ActionListener{
 
@@ -17,7 +18,22 @@ public class SettingController extends Object implements ActionListener{
 
 		switch(actionCommand){
 			case FrameComponentName.EXIT_SETTING_BUTTON -> {
+				this.stringConversionDataModel.updateSettingStringConversionDataList(this.settingView.getSelectedButtonNumber(true), this.settingView.getConversionAreaStringMap());
+				try {
+					this.stringConversionDataModel.updateConversionDataFile();
+				} catch (IOException exception) {
+					exception.printStackTrace();
+				}
 				this.stringConversionDataModel.frameChangeSettingToTextEditer();
+			}
+			case FrameComponentName.SAVE_SETTING_BUTTON -> {
+				this.stringConversionDataModel.updateSettingStringConversionDataList(this.settingView.getSelectedButtonNumber(true), this.settingView.getConversionAreaStringMap());
+				try {
+					this.stringConversionDataModel.updateConversionDataFile();
+				} catch (IOException exception) {
+					exception.printStackTrace();
+				}
+
 			}
 			default -> {
 				this.searchConversionName(actionCommand);
@@ -26,9 +42,10 @@ public class SettingController extends Object implements ActionListener{
 	}
 
 	private void searchConversionName(String actionCommandString){
-		System.out.println(actionCommandString);
 		for (FrameComponentName.ConversionNames conversionName : FrameComponentName.ConversionNames.values()) {
 			if(conversionName.name().equals(actionCommandString)){
+				this.settingView.setSelectedButtonNumber(conversionName.getInteger());
+				this.stringConversionDataModel.updateSettingStringConversionDataList(this.settingView.getSelectedButtonNumber(false), this.settingView.getConversionAreaStringMap());
 				this.stringConversionDataModel.setConversionAreaString(conversionName.getInteger());
 			}
 		}

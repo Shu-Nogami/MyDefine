@@ -22,8 +22,11 @@ public class StringConversionDataModel extends Object {
 
 	private List<Map<String, String>> stringConversionDataList;
 
+	private List<Map<String, String>> settingStringConversionDataList;
+
 	public StringConversionDataModel() {
 		this.stringConversionDataList = new ArrayList<>();
+		this.settingStringConversionDataList = new ArrayList<>();
 		this.fileSaveModel = new FileSaveModel();
 		this.conversionDataFileRoadModel = new ConversionDataFileRoadModel();
 		this.fileImportModel = new FileImportModel();
@@ -37,6 +40,7 @@ public class StringConversionDataModel extends Object {
 	}
 
 	public void frameChangeTextEditerToSetting(){
+		this.frameView.resetSettingSelectedButtonNumber();
 		this.frameView.updateConversionAreaString(this.stringConversionDataList.get(0), true);
 		this.frameView.showSettingPanel();
 	}
@@ -51,11 +55,17 @@ public class StringConversionDataModel extends Object {
 	}
 
 	public void saveFile(String aTextEditerAreaString) throws IOException {
-		this.fileSaveModel.saveFile(this.openingTextEditerFile, aTextEditerAreaString);
+		if(this.openingTextEditerFile.exists()){
+		    this.fileSaveModel.saveFile(this.openingTextEditerFile, aTextEditerAreaString);
+		}
+		else{
+			this.frameView.openTextEditerSaveAsFileDialog();
+		}
 	}
 
 	public void saveAsFile(File aSaveAsFile, String aTextEditerAreaString) throws IOException {
-		this.fileSaveModel.saveFile(aSaveAsFile, aTextEditerAreaString);
+		this.openingTextEditerFile = aSaveAsFile;
+		this.fileSaveModel.saveFile(this.openingTextEditerFile, aTextEditerAreaString);
 	}
 
 	public void importTextEditerFile(File aImportFile) throws IOException{
@@ -63,13 +73,15 @@ public class StringConversionDataModel extends Object {
 	}
 
 	public void exportTextEditerFile(File aExportFile) throws IOException{
-		this.fileExportModel.fileExport(aExportFile, stringConversionDataList, this.frameView.getTextAreaString());
+		this.fileExportModel.exportFile(aExportFile, stringConversionDataList, this.frameView.getTextAreaString());
 	}
 
 	private void searchConversionDataFile() throws IOException{
 		File conversionDataFile = new File(ConversionDataFileConstant.CONVERSION_DATA_FILE_PATH);
 		if(conversionDataFile.exists()){
+			this.fileSaveModel.setConversionDataFile(conversionDataFile);
 			this.stringConversionDataList = this.conversionDataFileRoadModel.getConversionData(conversionDataFile, this.stringConversionDataList);
+			this.settingStringConversionDataList = this.stringConversionDataList;
 		}
 		else{
 			this.createConversionDataFile();
@@ -82,5 +94,14 @@ public class StringConversionDataModel extends Object {
 
 	public void setConversionAreaString(Integer selectRadioNumber){
 		this.frameView.updateConversionAreaString(this.stringConversionDataList.get(selectRadioNumber), false);
+	}
+
+	public void updateSettingStringConversionDataList(Integer selectRadioNumber, Map<String, String> aStringConversionDataMap){
+		this.settingStringConversionDataList.set(selectRadioNumber, aStringConversionDataMap);
+	}
+
+	public void updateConversionDataFile() throws IOException{
+		this.stringConversionDataList = this.settingStringConversionDataList;
+		this.fileSaveModel.updateWriteConversionDataFile(this.stringConversionDataList);
 	}
 }

@@ -94,4 +94,12 @@ public class FrameView extends JFrame {
 	public String getTextAreaString(){
 		return this.textEditerView.getTextAreaString();
 	}
+
+	public void resetSettingSelectedButtonNumber(){
+		this.settingView.resetSelectedButtonList();
+	}
+
+	public void openTextEditerSaveAsFileDialog() throws IOException{
+		this.textEditerView.saveAsFileDialog();
+	}
 }

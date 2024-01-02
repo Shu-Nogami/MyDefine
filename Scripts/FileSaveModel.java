@@ -1,3 +1,5 @@
+import java.util.List;
+import java.util.Map;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -43,6 +45,24 @@ public class FileSaveModel extends FileBase {
 		}
 	}
 
+	public void updateWriteConversionDataFile(List<Map<String, String>> aConversionDataList) throws IOException{
+		this.resetConversionDataFile();
+		IntStream.rangeClosed(1, ConversionDataFileConstant.CONVERSION_STRING_NUMBER).forEach(i -> {
+			try {
+				for (Map.Entry<String,String> aConversionData : aConversionDataList.get(i - 1).entrySet()){
+					this.writeConversionDataFile(aConversionData.getKey(), aConversionData.getValue());
+				}
+			} catch (IOException exception) {
+				exception.printStackTrace();
+			}
+		});
+		try {
+			this.writeEndConversionDataFile();
+		} catch (IOException exception) {
+			exception.printStackTrace();
+		}
+	}
+
 	private void writeConversionDataFile(String aConversionBeforeDataString, String aConversionAfterDataString) throws IOException{
 		FileWriter conversionDataFileWriter = new FileWriter(this.conversionDataFile, true);
 
@@ -67,6 +87,18 @@ public class FileSaveModel extends FileBase {
 		conversionDataFileWriter.write(ConversionDataFileConstant.END_CONVERSION_STRING);
 
 		conversionDataFileWriter.close();
+	}
+
+	private void resetConversionDataFile() throws IOException{
+		FileWriter conversionDataFileWriter = new FileWriter(this.conversionDataFile, false);
+
+		conversionDataFileWriter.write("");
+
+		conversionDataFileWriter.close();
+	}
+
+	public void setConversionDataFile(File aConversionDataFile){
+		this.conversionDataFile = aConversionDataFile;
 	}
 
 }
